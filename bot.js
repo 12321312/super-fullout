@@ -144,6 +144,7 @@ const loadCommands = module.exports.loadCommands = (dir = "./cmds/") => {
 };
 loadCommands();
 
+
 bot.on('message', async message => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
