@@ -11,4 +11,4 @@ module.exports.command = {
     usage: "usercommand",
     category: "user",
     enabled: true
-}; 
+};  
