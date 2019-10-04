@@ -16,36 +16,6 @@ let cooldown = new Set();
 let cdseconds = 7;
 
 
-// Подгрузка команд 
-bot.commands = new Discord.Collection();
-bot.aliases = new Discord.Collection();
-
-const loadCommands = module.exports.loadCommands = (dir = "./cmds/") => {
-    fs.readdir(dir, (error, files) => {                 
-        if (error) return console.log(error); 
-        let jsfiles = files.filter(f => f.split(".").pop() === "js");
-        if(jsfiles.length <=0) console.log("Нет комманд для загрузки!!");
-        console.log(`Загружено ${jsfiles.length} комманд`);                   
-        files.forEach((file) => {   
-            if (fs.lstatSync(dir + file).isDirectory()) {
-                loadCommands(dir + file + "/");
-                return;
-            }
-
-            delete require.cache[require.resolve(`${dir}${file}`)];
-
-            let props = require(`${dir}${file}`);
-
-            bot.commands.set(props.command.name, props);
-
-            if (props.command.aliases)  props.command.aliases.forEach(alias => { 
-                bot.aliases.set(alias, props.command.name); 
-            });
-        });
-    });
-};
-loadCommands();
-
 // бот реакции
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
 
@@ -123,6 +93,7 @@ process.on('unhandledRejection', err => {
 });
 
 
+
 // При загузке
 bot.on('ready', () => {
     wait(1000);
@@ -142,6 +113,36 @@ bot.on('ready', () => {
       });
   });
 
+
+// Подгрузка команд 
+bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
+
+const loadCommands = module.exports.loadCommands = (dir = "./cmds/") => {
+    fs.readdir(dir, (error, files) => {                 
+        if (error) return console.log(error); 
+        let jsfiles = files.filter(f => f.split(".").pop() === "js");
+        if(jsfiles.length <=0) console.log("Нет комманд для загрузки!!");
+        console.log(`Загружено ${jsfiles.length} комманд`);                   
+        files.forEach((file) => {   
+            if (fs.lstatSync(dir + file).isDirectory()) {
+                loadCommands(dir + file + "/");
+                return;
+            }
+
+            delete require.cache[require.resolve(`${dir}${file}`)];
+
+            let props = require(`${dir}${file}`);
+
+            bot.commands.set(props.command.name, props);
+
+            if (props.command.aliases)  props.command.aliases.forEach(alias => { 
+                bot.aliases.set(alias, props.command.name); 
+            });
+        });
+    });
+};
+loadCommands();
 
 bot.on('message', async message => {
     if(message.author.bot) return;
