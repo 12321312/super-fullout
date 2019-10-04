@@ -9,7 +9,7 @@ const roles = ["Братство Стали", "Институт","Подземк
 const reactions = ["BoS","Unst","podzemka","minutemen","Raider","trapper","atom","FreeStates"];
 const embedColor = "#dd2423"; 
 const embedThumbnail = true; 
-const embedThumbnailLink = ""; 
+const embedThumbnailLink = "http://pngimg.com/uploads/fallout/fallout_PNG58.png"; 
 let config = require('./config.json');
 let prefix = config.prefix;
 
