@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+let config = require('./config.json');
+let prefix = config.prefix;
 const fs = require('fs');
 const invites = {};
 const wait = require('util').promisify(setTimeout);
@@ -10,8 +12,6 @@ const reactions = ["BoS","Unst","podzemka","minutemen","Raider","trapper","atom"
 const embedColor = "#dd2423"; 
 const embedThumbnail = true; 
 const embedThumbnailLink = "http://pngimg.com/uploads/fallout/fallout_PNG58.png"; 
-let config = require('./config.json');
-let prefix = config.prefix;
 let cooldown = new Set();
 let cdseconds = 7;
 
