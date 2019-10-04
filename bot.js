@@ -3,7 +3,19 @@ const bot = new Discord.Client();
 const fs = require('fs');
 const invites = {};
 const wait = require('util').promisify(setTimeout);
+const yourID = "294844223675564034"; 
+const setupCMD = "!роль";
+const roles = ["ПК", "Консоль"];
+const reactions = ["💻","🎮"];
+const embedColor = "#dd2423"; 
+const embedThumbnail = true; 
+const embedThumbnailLink = "http://pngimg.com/uploads/shield/shield_PNG1276.png"; 
+let config = require('./config.json');
+let prefix = config.prefix;
 
+
+
+// Подгрузка команд 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
@@ -33,6 +45,82 @@ const loadCommands = module.exports.loadCommands = (dir = "./cmds/") => {
 };
 loadCommands();
 
+// бот реакции
+if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
+
+function generateEmbedFields() {
+    return roles.map((r, e) => {
+        return {
+            emoji: reactions[e],
+            role: r
+        };
+    });
+}
+
+function checkRole(guild, role) {
+    const checkRole = guild.roles.find(r => r.name === role);
+    if (checkRole) return true;
+    else return false;
+}
+
+bot.on('error', console.error);
+
+
+const events = {
+	MESSAGE_REACTION_ADD: 'messageReactionAdd',
+	MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
+};
+
+
+bot.on('raw', async event => {
+
+    if (!events.hasOwnProperty(event.t)) return;
+
+    const { d: data } = event;
+    const user = bot.users.get(data.user_id);
+    const channel = bot.channels.get(data.channel_id);
+
+    const message = await channel.fetchMessage(data.message_id);
+    const member = message.guild.members.get(user.id);
+
+    const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
+    let reaction = message.reactions.get(emojiKey);
+
+    if (!reaction) {
+        const emoji = new Discord.Emoji(bot.guilds.get(data.guild_id), data.emoji);
+        reaction = new Discord.MessageReaction(message, emoji, 1, data.user_id === bot.user.id);
+    }
+
+    let embedFooterText;
+    if (message.embeds[0]) embedFooterText = message.embeds[0].footer.text;
+
+    if (message.author.id === bot.user.id && ((message.embeds[0]))) {
+
+            const fields = message.embeds[0].fields;
+
+            for (let i = 0; i < fields.length; i++) {
+                if (member.id !== bot.user.id) {
+                    const role = message.guild.roles.find(r => r.name === fields[i].value);
+
+                    if ((fields[i].name === reaction.emoji.name) || (fields[i].name === reaction.emoji.toString())) {
+                        if (event.t === "MESSAGE_REACTION_ADD") {
+                            member.addRole(role.id);
+                            break;
+                        } else {
+                            member.removeRole(role.id);
+                            break;
+                        }
+                    }
+                }
+            }
+    }
+});
+
+process.on('unhandledRejection', err => {
+    let msg = err.stack.replace(new RegExp(`${__dirname}/`, 'g'), './');
+	console.error(`Unhandled Rejection: \n ${msg}`);
+});
+
 
 // При загузке
 bot.on('ready', () => {
@@ -53,6 +141,78 @@ bot.on('ready', () => {
       });
   });
 
+
+bot.on('message', async message => {
+    if(message.author.bot) return;
+    if(message.channel.type == "dm") return;
+    bot.emit('checkMessage', message);
+    bot.send = function (msg){
+          message.channel.send(msg);
+    };
+    let inviteLink = /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-zA-Z0-9]/gi;
+    if (message.content.match(inviteLink)) {
+       console.log(`Удален инвайт ${message.content} пользователя ${message.author.tag}`);
+       message.delete();
+    };
+
+    if (message.author.id == yourID && message.content.toLowerCase() == setupCMD) {
+
+        const roleEmbed = new Discord.RichEmbed()
+            .setTitle(`**Ключи:**`)
+            .setDescription("```Поставь реакцию под сообщением своей платформы и получи доступ к трейд-каналам.```")
+            .setFooter("Твой милый бот", "https://cs4.pikabu.ru/post_img/big/2016/07/16/9/1468678258134342020.jpg")
+            .setTimestamp();
+    
+        if (embedColor) roleEmbed.setColor(embedColor);
+        if (embedThumbnail) roleEmbed.setThumbnail(embedThumbnailLink);
+    
+        const fields = generateEmbedFields();
+        if (fields.length >= 25) throw "Максимум 25 ролей!";
+    
+        for (const f of fields) {
+            if (!checkRole(message.guild, f.role)) throw `Роль '${role}' не найдена!`;
+    
+            const emoji = f.emoji;
+            const customEmote = bot.emojis.find(e => e.name === emoji);
+            
+            if (!customEmote) roleEmbed.addField(emoji, f.role, true);
+            else roleEmbed.addField(customEmote, f.role, true);
+        }
+    
+        message.channel.send({embed:roleEmbed}).then(async m => {
+            for (const r of reactions) {
+                const emoji = r;
+                const customEmote = bot.emojis.find(e => e.name === emoji);
+                
+                if (!customEmote) await m.react(emoji);
+                else await m.react(customEmote.id);
+            }
+        });
+    }  
+    if(!message.content.startsWith(prefix)) return;
+    await message.react(bot.emojis.get("629575624272510976"));
+
+    let args = message.content.slice(prefix.length).trim().split(/ +/g);
+  let cmd = args.shift().toLowerCase();
+  let command;
+
+   if (bot.commands.has(cmd)) {
+    command = bot.commands.get(cmd);
+   } else if (bot.aliases.has(cmd)) {
+    command = bot.commands.get(bot.aliases.get(cmd));
+   }
+
+   if (!message.content.startsWith(prefix)) return;
+
+   if (command) {
+    if (message.author.id !== "294844223675564034" && !command.command.enabled) return message.reply("извините. Команда была отключена!");
+   }
+
+   try {
+    command.run(bot, message, args, connection);
+   } catch (e) {
+   }
+});
 
 // Автороль + логирование
 bot.on('guildMemberAdd', member => {
