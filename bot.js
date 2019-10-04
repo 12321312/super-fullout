@@ -4,12 +4,12 @@ const fs = require('fs');
 const invites = {};
 const wait = require('util').promisify(setTimeout);
 const yourID = "294844223675564034"; 
-const setupCMD = "!роль";
-const roles = ["ПК", "Консоль"];
-const reactions = ["💻","🎮"];
+const setupCMD = "!роль2";
+const roles = ["Братство Стали", "Институт","Подземка","Минитмен","Рейдер","Траппер","Дети Атома","Свободные штаты"];
+const reactions = ["BoS","Unst","podzemka","minutemen","Raider","trapper","atom","FreeStates"];
 const embedColor = "#dd2423"; 
 const embedThumbnail = true; 
-const embedThumbnailLink = "http://pngimg.com/uploads/shield/shield_PNG1276.png"; 
+const embedThumbnailLink = ""; 
 let config = require('./config.json');
 let prefix = config.prefix;
 
@@ -158,8 +158,8 @@ bot.on('message', async message => {
     if (message.author.id == yourID && message.content.toLowerCase() == setupCMD) {
 
         const roleEmbed = new Discord.RichEmbed()
-            .setTitle(`**Ключи:**`)
-            .setDescription("```Поставь реакцию под сообщением своей платформы и получи доступ к трейд-каналам.```")
+            .setTitle(`**Фракции:**`)
+            .setDescription("```Выбери свою фракцию.```")
             .setFooter("Твой милый бот", "https://cs4.pikabu.ru/post_img/big/2016/07/16/9/1468678258134342020.jpg")
             .setTimestamp();
     
