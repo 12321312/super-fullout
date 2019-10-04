@@ -12,7 +12,8 @@ const embedThumbnail = true;
 const embedThumbnailLink = "http://pngimg.com/uploads/fallout/fallout_PNG58.png"; 
 let config = require('./config.json');
 let prefix = config.prefix;
-
+let cooldown = new Set();
+let cdseconds = 7;
 
 
 // Подгрузка команд 
@@ -189,10 +190,19 @@ bot.on('message', async message => {
             }
         });
     }  
-    if(!message.content.startsWith(prefix)) return;
-    await message.react(bot.emojis.get("629575624272510976"));
 
-    let args = message.content.slice(prefix.length).trim().split(/ +/g);
+    if(!message.content.startsWith(prefix)) return;
+    if(cooldown.has(message.author.id)){
+      message.delete();
+      return message.reply("хэй! Подожди 7 секунд и пиши команду...")
+    }
+    if(!message.member.roles.some(r=>["Смотритель"].includes(r.name)) ){
+      cooldown.add(message.author.id);
+   } 
+
+  await message.react(bot.emojis.get("629575624272510976"));
+
+  let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift().toLowerCase();
   let command;
 
@@ -212,6 +222,10 @@ bot.on('message', async message => {
     command.run(bot, message, args, connection);
    } catch (e) {
    }
+
+   setTimeout(() => {
+    cooldown.delete(message.author.id)
+  }, cdseconds * 1000)
 });
 
 // Автороль + логирование
