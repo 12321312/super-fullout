@@ -81,5 +81,22 @@ bot.on('guildMemberAdd', member => {
     });
 });
 
+bot.on('guildMemberRemove', member => {
+    console.log('User ' + member.user.tag + ' вышел с сервера!');
+    let gggrole = member.roles.filter(r => r.name !=="@everyone").map(r => r).join(', ')
+    if (!gggrole) gggrole = "не было";
+    let channel = bot.channels.get("629570190769913876");
+    let Vshdex = new Discord.RichEmbed()
+    .setTitle("Вышел с сервера")
+    .setTimestamp()
+    .setThumbnail("https://i.ibb.co/QkmrYsK/image.png")
+    .setFooter("Лог мастер 2000", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
+    .setColor("#f80000")
+    .addField("Вышел:", `<@${member.user.id}>`, true)
+    .addField("Были роли:", gggrole, false);
+    channel.send({embed:Vshdex});
+  });
+  
+
 // login 
 bot.login(process.env.BOT_TOKEN);
