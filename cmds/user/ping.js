@@ -8,7 +8,7 @@ module.exports.command = {
     name: 'ping',
     aliases: ["пинг", "показатьпинг", "пингклиент"],
     description: "Показывает пинг, чо доебался?",
-    usage: "usercommand",
+    usage: "usercommand", 
     category: "user",
     enabled: true
 };  
