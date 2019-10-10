@@ -159,7 +159,6 @@ bot.on('message', async message => {
     };
 
     if (message.author.id == yourID && message.content.toLowerCase() == setupCMD) {
-
         const roleEmbed = new Discord.RichEmbed()
             .setTitle(`**Фракции:**`)
             .setDescription("```Выбери свою фракцию.```")
@@ -193,7 +192,7 @@ bot.on('message', async message => {
         });
     }  
 
-    if(!message.content.startsWith(prefix)) return;
+  if(!message.content.startsWith(prefix)) return;
     if(cooldown.has(message.author.id)){
       message.delete();
       return message.reply("хэй! Подожди 7 секунд и пиши команду...")
@@ -213,8 +212,6 @@ bot.on('message', async message => {
    } else if (bot.aliases.has(cmd)) {
     command = bot.commands.get(bot.aliases.get(cmd));
    }
-
-   if (!message.content.startsWith(prefix)) return;
 
    if (command) {
     if (message.author.id !== "294844223675564034" && !command.command.enabled) return message.reply("извините. Команда была отключена!");
