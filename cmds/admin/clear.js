@@ -9,7 +9,7 @@ message.delete();
 if (!(args[0])) return message.reply('А сколько удалять то? \n Напиши: `!удалить <число>`');
 if ((args[0]) >= 100) return message.reply('Больше 100 за раз не могу ;с');
 const fetched = await message.channel.fetchMessages({limit: args[0]});
-let mutechannel = message.guild.channels.get("537720268446236682");
+let mutechannel = message.guild.channels.get("629570190769913876");
 if(!mutechannel) return message.channel.send("Сбились настройки логирования, проверьте пожалуйста их.");
 let clearmess = new Discord.RichEmbed()
 .setDescription("Удалены сообщения")
