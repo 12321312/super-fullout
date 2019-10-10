@@ -214,7 +214,7 @@ bot.on('message', async message => {
   if (!message.content.startsWith(prefix)) return;
   
   if (command) {
-     if (message.author.id !== "id_владельца_бота" && !command.command.enabled) return message.reply("извините. Команда была отключена!");
+     if (message.author.id !== "294844223675564034" && !command.command.enabled) return message.reply("извините. Команда была отключена!");
   }
   
   try {
