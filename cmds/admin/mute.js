@@ -57,7 +57,6 @@ mutechannel.send({embed:muteEmbed});
 setTimeout(function(){
     tomute.removeRole(muterole.id);
 },ms(mutetime));
-};
 
 
 };
