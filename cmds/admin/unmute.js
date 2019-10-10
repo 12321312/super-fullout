@@ -27,7 +27,7 @@ message.channel.send('Пользователь' + `<@${tomute.id}>` + ' был �
 message.delete();
 mutechannel.send({embed:muteEmbed}); 
 tomute.removeRole(muterole.id);   
-};
+}; 
 module.exports.command = {
     name: 'untempmute',
     aliases: ["унмут", "снятьмут"],
