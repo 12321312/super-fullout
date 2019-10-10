@@ -204,21 +204,23 @@ bot.on('message', async message => {
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift().toLowerCase();
   let command;
-
-   if (bot.commands.has(cmd)) {
-    command = bot.commands.get(cmd);
-   } else if (bot.aliases.has(cmd)) {
-    command = bot.commands.get(bot.aliases.get(cmd));
-   }
-
-   if (command) {
-    if (message.author.id !== "294844223675564034" && !command.command.enabled) return message.reply("извините. Команда была отключена!");
-   }
-
-   try {
-    command.run(bot, message, args, connection);
-   } catch (e) {
-   }
+  
+  if (bot.commands.has(cmd)) {
+      command = bot.commands.get(cmd);
+  } else if (bot.aliases.has(cmd)) {
+      command = bot.commands.get(bot.aliases.get(cmd));
+  }
+  
+  if (!message.content.startsWith(prefix)) return;
+  
+  if (command) {
+     if (message.author.id !== "id_владельца_бота" && !command.command.enabled) return message.reply("извините. Команда была отключена!");
+  }
+  
+  try {
+     command.run(bot, message, args);
+  } catch (e) {
+  }
 
    setTimeout(() => {
     cooldown.delete(message.author.id)
