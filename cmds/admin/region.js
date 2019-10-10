@@ -14,7 +14,7 @@ let regionEmbed = new Discord.RichEmbed()
 .addField("Администратор:", `<@${message.author.id}>`)
 .addField("Был регион:", message.guild.region, true);
 
-let logchannel = message.guild.channels.get("537720268446236682");
+let logchannel = message.guild.channels.get("629570190769913876");
 if(!logchannel) return message.channel.send("Сбились настройки логирования, проверьте пожалуйста их.");
 
 
