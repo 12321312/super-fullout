@@ -12,11 +12,11 @@ let donrole = message.guild.roles.find('name', "Dukes of Nukes");
 if((args[1]) == "-"){
 if (!tomute.roles.get('632205691104395266')) return message.reply('he does not have this role...');
 await(tomute.removeRole(donrole.id));
-message.reply(`took a role <@${donrole.id}> the user <@${tomute.id}>.`);
+message.reply(`took a role <@&${donrole.id}> the user <@${tomute.id}>.`);
 } else {
 if (tomute.roles.get('632205691104395266')) return message.reply('he already has this role....');
 await(tomute.addRole(donrole.id));
-message.reply(`issued a role <@${donrole.id}> the user <@${tomute.id}>.`);
+message.reply(`issued a role <@&${donrole.id}> the user <@${tomute.id}>.`);
 };
 } else return message.reply('access denied, sorry.'); 
 
