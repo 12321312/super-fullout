@@ -72,7 +72,6 @@ bot.on('raw', async event => {
             for (let i = 0; i < fields.length; i++) {
                 if (member.id !== bot.user.id) {
                     const role = message.guild.roles.find(r => r.name === fields[i].value);
-                    if (member.roles.get(role.id)) return;
                     if ((fields[i].name === reaction.emoji.name) || (fields[i].name === reaction.emoji.toString())) {
                         if (event.t === "MESSAGE_REACTION_ADD") {
                             member.addRole(role.id);
