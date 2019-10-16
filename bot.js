@@ -7,8 +7,8 @@ const invites = {};
 const wait = require('util').promisify(setTimeout);
 const yourID = "294844223675564034"; 
 const setupCMD = "!роль2";
-const roles = ["Братство Стали", "Институт","Подземка","Минитмен","Рейдер","Траппер","Дети Атома","Свободные штаты"];
-const reactions = ["BoS","Unst","podzemka","minutemen","Raider","trapper","atom","FreeStates"];
+const roles = ["Братство Стали", "Институт","Подземка","Минитмен","Рейдер","Траппер","Дети Атома","Свободные штаты","Анклав"];
+const reactions = ["BoS","Unst","podzemka","minutemen","Raider","trapper","atom","FreeStates","anklav"];
 const embedColor = "#dd2423"; 
 const embedThumbnail = true; 
 const embedThumbnailLink = "http://pngimg.com/uploads/fallout/fallout_PNG58.png"; 
@@ -72,7 +72,7 @@ bot.on('raw', async event => {
             for (let i = 0; i < fields.length; i++) {
                 if (member.id !== bot.user.id) {
                     const role = message.guild.roles.find(r => r.name === fields[i].value);
-
+                    if (member.roles.get(role.id)) return;
                     if ((fields[i].name === reaction.emoji.name) || (fields[i].name === reaction.emoji.toString())) {
                         if (event.t === "MESSAGE_REACTION_ADD") {
                             member.addRole(role.id);
