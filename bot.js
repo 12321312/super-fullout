@@ -7,9 +7,9 @@ const invites = {};
 const wait = require('util').promisify(setTimeout);
 const yourID = "294844223675564034"; 
 const setupCMD = "!роль2";
-const roles = ["Братство Стали", "Институт","Подземка","Минитмен","Рейдер","Траппер","Дети Атома","Свободные штаты","Анклав"];
-const reactions = ["BoS","Unst","podzemka","minutemen","Raider","trapper","atom","FreeStates","anklav"];
-const embedColor = "#dd2423"; 
+const roles = ["secret-key"];
+const reactions = ["🔞"];
+const embedColor = "#000000"; 
 const embedThumbnail = true; 
 const embedThumbnailLink = "http://pngimg.com/uploads/fallout/fallout_PNG58.png"; 
 let cooldown = new Set();
@@ -157,8 +157,8 @@ bot.on('message', async message => {
 
     if (message.author.id == yourID && message.content.toLowerCase() == setupCMD) {
         const roleEmbed = new Discord.RichEmbed()
-            .setTitle(`**Фракции:**`)
-            .setDescription("```Выбери свою фракцию.```")
+            .setTitle(`**Специализированные каналы:**`)
+            .setDescription("```Если Вы хотите получить доступ к специализированным каналам с контентом +18, каналам без правил и полностью соглашаетесь с увиденным контентом в них, поставьте ниже реакцию.```")
             .setFooter("Твой милый бот", "https://cs4.pikabu.ru/post_img/big/2016/07/16/9/1468678258134342020.jpg")
             .setTimestamp();
     
