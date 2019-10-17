@@ -11,7 +11,7 @@ const roles = ["secret-key"];
 const reactions = ["🔞"];
 const embedColor = "#000000"; 
 const embedThumbnail = true; 
-const embedThumbnailLink = "http://pngimg.com/uploads/fallout/fallout_PNG58.png"; 
+const embedThumbnailLink = "https://rating.pegi.info/images/games/age_threshold_icons/18.png"; 
 let cooldown = new Set();
 let cdseconds = 7;
 
