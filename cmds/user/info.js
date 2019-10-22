@@ -25,7 +25,7 @@ exports.run = async (bot, message, args) => {
 };
 module.exports.command = {
   name: 'info',
-  aliases: ["серверинфо", "инфосервер", "инфопросервер"],
+  aliases: ["серверинфо", "инфосервер", "инфопросервер", "инфо"],
   description: "Инфа о сервере, чо доебался?",
   usage: "usercommand",
   category: "user",
