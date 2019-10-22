@@ -11,10 +11,10 @@ let donrole = message.guild.roles.find('name', "Бригада");
 
 if(tomute.roles.get('636042097085906946')){
 await(tomute.removeRole(donrole.id));
-message.reply(`Выдал роль <@&${donrole.id}> пользователю <@${tomute.id}>.`);
+message.reply(`Забрал роль <@&${donrole.id}> у пользователя <@${tomute.id}>.`);
 } else {
 await(tomute.addRole(donrole.id));
-message.reply(`Забрал роль <@&${donrole.id}> у пользователя <@${tomute.id}>.`);
+message.reply(`Выдал роль <@&${donrole.id}> пользователю <@${tomute.id}>.`);
 };
 } else return message.reply('нет доступа.'); 
 
