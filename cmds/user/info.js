@@ -3,7 +3,7 @@ const fs = require("fs");
 exports.run = async (bot, message, args) => { 
  let channels = message.guild.channels.filter(c => c.type === 'voice')
   let infore = new Discord.RichEmbed()
-  .setTitle("Информация о сервере ~Fox's Shelter~")
+  .setTitle("Информация о сервере ~F76-Свидетели полураспада~")
   .setThumbnail(message.guild.iconURL)
   .setFooter("Твой милый бот", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
   .setTimestamp()
