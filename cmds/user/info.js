@@ -2,7 +2,6 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 exports.run = async (bot, message, args) => { 
  let channels = message.guild.channels.filter(c => c.type === 'voice');
- let mertions = channels.members;
 
   let infore = new Discord.RichEmbed()
   .setTitle("Информация о сервере ~F76-Свидетели полураспада~")
@@ -12,7 +11,7 @@ exports.run = async (bot, message, args) => {
   .setColor("#FFDF00")
   .addField("Всего участников:", message.guild.members.size, true)
   .addField("Всего онлайн:", message.guild.members.filter(m => m.presence.status === 'online').size, true)
-  .addField("Участников в голосе:", mertions.size, false)
+  .addField("Участников в голосе:", voiceChannel.members, false)
   .addField("Мой пинг:", "-" + bot.ping , true)
   .addField("Твой пинг:", message.createdTimestamp - Date.now(), true)
   .addField("ID сервера:", message.guild.id)
