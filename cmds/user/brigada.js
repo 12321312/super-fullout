@@ -20,7 +20,7 @@ message.reply(`Забрал роль <@&${donrole.id}> у пользовател
 
 };
 module.exports.command = {
-    name: 'dukesofnukes',
+    name: 'brigada',
     aliases: ["бригада", "brigada", "brig"],
     description: "Выдаёт кик нахуй, чо доебался?",
     usage: "admincommand",
