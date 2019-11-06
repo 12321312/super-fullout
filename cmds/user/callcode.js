@@ -15,7 +15,7 @@ exports.run = async (bot, message, args) => {
     let code = $('#nuclearcodess').text();
     let mcode = code.replace(/\s+/g, '');
     
-    let alfa = mcode.slice(47, -55);
+    let alfa = mcode.slice(47, -40);
     let brava = mcode.slice(55, -63);
     let charli = mcode.slice(63, -71);
 
