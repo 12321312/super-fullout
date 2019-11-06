@@ -15,9 +15,9 @@ exports.run = async (bot, message, args) => {
     let code = $('#nuclearcodess').text();
     let mcode = code.replace(/\s+/g, '');
     
-    let alfa = mcode.slice(31, -40);
-    let brava = mcode.slice(39, -32);
-    let charli = mcode.slice(47, -24);
+    let alfa = mcode.slice(47, -55);
+    let brava = mcode.slice(55, -63);
+    let charli = mcode.slice(63, -71);
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
     if (brava === "UNSOLVED") brava = "Нет данных.";
