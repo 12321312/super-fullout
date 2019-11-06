@@ -18,7 +18,7 @@ exports.run = async (bot, message, args) => {
     let alfa = mcode.slice(47, -40);
     let brava = mcode.slice(55, -32);
     let charli = mcode.slice(63, -24);
-    let ckakogo = mcode.slice(17, -70);
+    let ckakogo = mcode.slice(17, -69);
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
     if (brava === "UNSOLVED") brava = "Нет данных.";
