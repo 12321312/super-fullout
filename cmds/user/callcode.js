@@ -18,6 +18,7 @@ exports.run = async (bot, message, args) => {
     let alfa = mcode.slice(47, -40);
     let brava = mcode.slice(55, -32);
     let charli = mcode.slice(63, -24);
+    let ckakogo = mcode.slice(17, -70);
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
     if (brava === "UNSOLVED") brava = "Нет данных.";
@@ -25,12 +26,11 @@ exports.run = async (bot, message, args) => {
     
     let a = message.author;
     let ambed = new Discord.RichEmbed()
-    .setTitle("Коды запуска ракет:")
+    .setTitle(`Коды запуска ракет *${ckakogo}*:`)
     .setDescription(`https://nukacrypt.com/`)
     .setTimestamp()
     .setFooter("Система запуска.", "https://vignette.wikia.nocookie.net/fallout/images/c/c2/Icon_Vault_76.png/revision/latest?cb=20181217214332&path-prefix=ru")
     .setColor('#c10020')
-    .addField("Тест:", `**${mcode}**`, true)
     .addField("Альфа:", `**${alfa}**`, true)
     .addField("Браво:", `**${brava}**`, true)
     .addField("Чарли:", `**${charli}**`, true);
