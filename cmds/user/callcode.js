@@ -26,7 +26,7 @@ exports.run = async (bot, message, args) => {
     
     let a = message.author;
     let ambed = new Discord.RichEmbed()
-    .setTitle(`Коды запуска ракет *${ckakogo}*:`)
+    .setTitle(`Коды запуска ракет:`)
     .setDescription(`https://nukacrypt.com/`)
     .setTimestamp()
     .setFooter("Система запуска.", "https://vignette.wikia.nocookie.net/fallout/images/c/c2/Icon_Vault_76.png/revision/latest?cb=20181217214332&path-prefix=ru")
