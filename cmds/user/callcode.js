@@ -16,8 +16,8 @@ exports.run = async (bot, message, args) => {
     let mcode = code.replace(/\s+/g, '');
     
     let alfa = mcode.slice(47, -40);
-    let brava = mcode.slice(55, -63);
-    let charli = mcode.slice(63, -71);
+    let brava = mcode.slice(55, -32);
+    let charli = mcode.slice(63, -24);
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
     if (brava === "UNSOLVED") brava = "Нет данных.";
