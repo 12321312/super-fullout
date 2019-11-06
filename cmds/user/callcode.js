@@ -14,7 +14,7 @@ exports.run = async (bot, message, args) => {
   .then(($) => {
     let code = $('#nuclearcodess').text();
     let mcode = code.replace(/\s+/g, '');
-
+    
     let alfa = mcode.slice(31, -40);
     let brava = mcode.slice(39, -32);
     let charli = mcode.slice(47, -24);
@@ -30,6 +30,7 @@ exports.run = async (bot, message, args) => {
     .setTimestamp()
     .setFooter("Система запуска.", "https://vignette.wikia.nocookie.net/fallout/images/c/c2/Icon_Vault_76.png/revision/latest?cb=20181217214332&path-prefix=ru")
     .setColor('#c10020')
+    .addField("Тест:", `**${mcode}**`, true)
     .addField("Альфа:", `**${alfa}**`, true)
     .addField("Браво:", `**${brava}**`, true)
     .addField("Чарли:", `**${charli}**`, true);
