@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 const ms = require("ms"); 
 exports.run = async (bot, message, args,) => { 
-if (message.author.id == "294844223675564034" || message.author.id == "518478507811274753") {
+if (message.author.id == "294844223675564034" || message.author.id == "518478507811274753" || message.author.id == "495275824346300446") {
 if (!(args[0])) return message.reply("Вы не указали участника.");
 let tomute = message.guild.member(message.mentions.users.first() || message.guild.member.get(args[0]));
 if(!tomute) return message.reply("Участник не найден.");
