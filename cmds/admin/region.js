@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 
 exports.run = async (bot, message, args) => { 
-if(!message.member.roles.some(r=>["Смотритель"].includes(r.name))) return message.reply('Отказано в доступе.');
+if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
 message.delete(15000);
 
 let regionEmbed = new Discord.RichEmbed()
