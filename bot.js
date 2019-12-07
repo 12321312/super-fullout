@@ -371,7 +371,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
   }
   
   try {
-     command.run(bot, message, args);
+     command.run(bot, message, args, connection);
   } catch (e) {
   }
 
