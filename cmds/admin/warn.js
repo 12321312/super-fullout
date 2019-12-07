@@ -53,7 +53,7 @@ connection.query(`SELECT * FROM warn WHERE id = '${target.id}'`, (err, rows) => 
      let muterole = message.guild.roles.find('name', "muted");
      
      if ((args[1]) == "снять") {
-     if(!message.member.roles.some(r=>["Лисий повелитель", "Куратор"].includes(r.name))) return message.reply('Отказано в доступе.');    
+     if(!message.member.roles.some(r=>["Розовое чудо", "Администрация"].includes(r.name))) return message.reply('Отказано в доступе.');    
      sql = `DELETE FROM warn WHERE id = '${target.id}'`
      message.delete();    
      message.channel.send(`Снял все варны с <@${target.id}>`);
