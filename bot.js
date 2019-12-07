@@ -249,7 +249,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
     let xprole5 = message.guild.roles.find('name', "Охотник на зверожогов");
     let xprole6 = message.guild.roles.find('name', "Легенда пустошей");
  
-    if(!message.member.roles.some(r=>["Розовое чудо2", "zxz-tv"].includes(r.name)) ){
+    if(!message.member.roles.some(r=>["Розовое чудо", "zxz-tv"].includes(r.name)) ){
     if (xp > 5000 && xp < 10000) { 
       if(zvaniad == 0) zvarl = `UPDATE xp SET zvania = 1 WHERE id = '${message.author.id}'`
       connection.query(zvarl);
