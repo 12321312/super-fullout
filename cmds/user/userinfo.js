@@ -25,10 +25,10 @@ exports.run = async (bot,message,args,connection) => {
 
     if (lvl < lvl.toFixed(0)) lvl -= 1;
 
-    let zhanei = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "Лисий повелитель" || r.name == "Куратор" || r.name == "Дозорный" || r.name == "Прислужник" || r.name == "Божество" || r.name == "Знаток" || r.name == "Просвещенный" || r.name == "Шнурок" || r.name == "Штуцер" || r.name == "Искушенный" || r.name == "Прозелит" || r.name == "V.I.P").map(r => r).join(', ')
+    let zhanei = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "Розовое чудо" || r.name == "zxz-tv" || r.name == "Выходец из убежища" || r.name == "Администрация" || r.name == "Модератор" || r.name == "Охотник на зверожогов" || r.name == "Легенда пустошей" || r.name == "Потрошитель" || r.name == "Опытный" || r.name == "Житель" || r.name == "Неизвестный" || r.name == "Nitro Booster 🔰").map(r => r).join(', ')
     if(!zhanei) zhanei = "нету";
     
-    let keys = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "Dota-key" || r.name == "EVE-key" || r.name == "Music-key" || r.name == "Minecraft-key" || r.name == "Gmod-key" || r.name == "SI-key" || r.name == "CS-key" || r.name == "Secret-key").map(r => r).join(', ')
+    let keys = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "secret-key" || r.name == "music-key" || r.name == "key-hut" || r.name == "key01").map(r => r).join(', ')
     let pole = "Мужской"; 
     if (message.member.roles.find('name', `Девушка в пустоши`)) pole = "Женский";
     let oritn = "Не установленно";
