@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 let config = require('./config.json');
 let prefix = config.prefix;
+const mysql = require("mysql");
 const fs = require('fs');
 const invites = {};
 const wait = require('util').promisify(setTimeout);
@@ -14,6 +15,7 @@ const embedThumbnail = true;
 const embedThumbnailLink = "https://rating.pegi.info/images/games/age_threshold_icons/18.png"; 
 let cooldown = new Set();
 let cdseconds = 7;
+
 
 
 // бот реакции
@@ -141,7 +143,44 @@ const loadCommands = module.exports.loadCommands = (dir = "./cmds/") => {
 };
 loadCommands();
 
+// My SQL
+// mysql
+var consql = {
+    host: process.env.HOST_MYSQL,
+    user: process.env.LOGIN_MYSQL,
+    password: process.env.PASSWORD_MYSQL,
+    database: process.env.DATABASE_MYSQL
+};
 
+var connection;
+ function handleDisconnect() {
+    connection = mysql.createConnection(consql); 
+
+    connection.connect(function(err) {              
+        if(err) {                                     
+          console.log('error when connecting to db:', err);
+          setTimeout(handleDisconnect, 2000); 
+        }                                    
+      });  
+      connection.on('error', function(err) {
+        //console.log('db error', err);
+        if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+          handleDisconnect();                         
+        } else {                                      
+          throw err;                                  
+        }
+      });
+    }
+    handleDisconnect();
+
+// XP
+function generateXp() {
+    let min = 2;
+    let max = 22;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Ивент мессенжер
 bot.on('message', async message => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
@@ -188,6 +227,121 @@ bot.on('message', async message => {
             }
         });
     };  
+
+// XP LOGGER
+connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, rows) => {
+    if(err) throw err;
+    let sql;
+    if(rows.length < 1) {
+     sql = `INSERT INTO xp (id, xp, point, zvania, mute) VALUES ('${message.author.id}', ${generateXp()}, 0, 0, 0)`
+    } else {
+     let xp = rows[0].xp;
+     let point = rows[0].point;
+     let zvaniad = rows[0].zvania;
+     let zvarl = `UPDATE xp SET zvania = ${zvaniad} WHERE id = '${message.author.id}'`
+     sql = `UPDATE xp SET xp = ${xp + generateXp()} WHERE id = '${message.author.id}'`
+ 
+    let xprole0 = message.guild.roles.find('name', "Выходец из убежища");
+    let xprole1 = message.guild.roles.find('name', "Неизвестный");
+    let xprole2 = message.guild.roles.find('name', "Житель");
+    let xprole3 = message.guild.roles.find('name', "Опытный");
+    let xprole4 = message.guild.roles.find('name', "Потрошитель");
+    let xprole5 = message.guild.roles.find('name', "Охотник на зверожогов");
+    let xprole6 = message.guild.roles.find('name', "Легенда пустошей");
+ 
+    if(!message.member.roles.some(r=>["Розовое чудо2", "zxz-tv"].includes(r.name)) ){
+    if (xp > 5000 && xp < 10000) { 
+      if(zvaniad == 0) zvarl = `UPDATE xp SET zvania = 1 WHERE id = '${message.author.id}'`
+      connection.query(zvarl);
+        if (!message.member.roles.find('name', "Неизвестный")) {
+        message.member.removeRole(xprole0.id); 
+        message.member.addRole(xprole1.id); 
+         if (zvaniad == 0) {
+          message.reply("поздравляю с новым званием <@&629545463506534401>! Вы набрали 5 уровень. Выдал вам **5 донат поинтов.**");
+          let poitadd = `UPDATE xp SET point = ${point}+5 WHERE id = '${message.author.id}'`
+          connection.query(poitadd);
+         } else if (zvaniad == 1) {
+          message.reply("Восстановил вам звание <@&629545463506534401>!");
+         };
+     }}
+     if (xp > 10000 && xp < 20000) { 
+      if(zvaniad == 1 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 2 WHERE id = '${message.author.id}'`
+      connection.query(zvarl);
+         if (!message.member.roles.find('name', "Житель")) {
+          message.member.removeRole(xprole1.id); 
+          message.member.addRole(xprole2.id); 
+           if (zvaniad == 1) {
+            message.reply("поздравляю с новым званием <@&629545925223776266>! Вы набрали 10 уровень. Выдал вам **10 донат поинтов.**");
+            let poitadd = `UPDATE xp SET point = ${point}+10 WHERE id = '${message.author.id}'`
+            connection.query(poitadd);
+           } else if (zvaniad == 2 || zvaniad == 0) {
+            message.reply("Восстановил вам звание <@&629545925223776266>!");
+           };
+     }}
+     if (xp > 20000 && xp < 35000) { 
+       if(zvaniad == 2 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 3 WHERE id = '${message.author.id}'`
+       connection.query(zvarl);   
+         if (!message.member.roles.find('name', "Опытный")) {
+          message.member.removeRole(xprole2.id); 
+          message.member.addRole(xprole3.id); 
+           if (zvaniad == 2) {
+            message.reply("поздравляю с новым званием <@&629546131969409024>! Вы набрали 20 уровень. Выдал вам **20 донат поинтов.**");
+            let poitadd = `UPDATE xp SET point = ${point}+20 WHERE id = '${message.author.id}'`
+            connection.query(poitadd);
+           } else if (zvaniad == 3 || zvaniad == 0) {
+            message.reply("Восстановил вам звание <@&629546131969409024>!");
+           };
+     }}
+     if (xp > 35000 && xp < 70000) {
+       if(zvaniad == 3 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 4 WHERE id = '${message.author.id}'`
+       connection.query(zvarl); 
+         if (!message.member.roles.find('name', "Потрошитель")) {
+         message.member.removeRole(xprole3.id); 
+         message.member.addRole(xprole4.id);
+          if (zvaniad == 3) { 
+           message.reply("поздравляю с новым званием <@&629545985030488074>! Вы набрали 35 уровень. Выдал вам **40 донат поинтов.**");
+           let poitadd = `UPDATE xp SET point = ${point}+40 WHERE id = '${message.author.id}'`
+           connection.query(poitadd);
+          } else if (zvania == 4 || zvania == 0) {
+           message.reply("Восстановил вам звание <@&629545985030488074>!");
+          };
+     }}
+     if (xp > 70000 && xp < 100000) {
+       if(zvaniad == 4 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 5 WHERE id = '${message.author.id}'`
+       connection.query(zvarl); 
+         if (!message.member.roles.find('name', "Охотник на зверожогов")) {
+         message.member.removeRole(xprole4.id); 
+         message.member.addRole(xprole5.id);
+         if (zvaniad == 4) { 
+         message.reply("поздравляю с новым званием <@&629546774213689346>! Вы набрали 70 уровень. Выдал вам **70 донат поинтов.**");
+         let poitadd = `UPDATE xp SET point = ${point}+70 WHERE id = '${message.author.id}'`
+         connection.query(poitadd);
+         } else if (zvaniad == 5 || zvaniad == 0) {
+         message.reply("Восстановил вам звание <@&629546774213689346>!");
+         };
+     }}
+     if (xp > 100000) {
+       if(zvaniad == 5 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 6 WHERE id = '${message.author.id}'`
+       connection.query(zvarl); 
+         if (!message.member.roles.find('name', "Легенда пустошей")) {
+         message.member.removeRole(xprole5.id); 
+         message.member.addRole(xprole6.id); 
+         if (zvaniad == 5) { 
+         message.reply("поздравляю с новым званием <@&629546991331835923>! Вы набрали 100 уровень, максимальный на этом сервере. Выдал вам в награду **100 донат поинтов.**");
+         let poitadd = `UPDATE xp SET point = ${point}+100 WHERE id = '${message.author.id}'`
+         connection.query(poitadd);
+         } else if (zvaniad == 6 || zvaniad == 0) {
+         message.reply("Восстановил вам звание <@&629546991331835923>!");
+         };
+     }}
+     };
+ }
+ 
+    connection.query(sql);
+   });
+// END XP LOGGER
+
+
 
   if(!message.content.startsWith(prefix)) return;
     if(cooldown.has(message.author.id)){
