@@ -348,7 +348,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
       message.delete();
       return message.reply("хэй! Подожди 7 секунд и пиши команду...")
     }
-    if(!message.member.roles.some(r=>["Смотритель"].includes(r.name)) ){
+    if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name)) ){
       cooldown.add(message.author.id);
    } 
 
