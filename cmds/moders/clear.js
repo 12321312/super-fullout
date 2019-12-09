@@ -64,7 +64,7 @@ module.exports.command = {
     name: 'clear',
     aliases: ["очистить", "удалить", "стереть"],
     description: "Удаляет всё нахуй, чо доебался?",
-    usage: "admincommand",
-    category: "admin",
+    usage: "moders",
+    category: "moders",
     enabled: true
 }; 
