@@ -369,7 +369,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
   if (command) {
      if (message.author.id !== "294844223675564034" && !command.command.enabled) return message.reply("извините. Команда была отключена!");
   } 
-     if (!message.member.roles.some(r=>["Модератор"].includes(r.name)) && command.usage("moders")) return message.reply("У вас нет доступа к данной команде, сорян");
+     if (!message.member.roles.some(r=>["Модератор"].includes(r.name)) && command.command.usage("moders")) return message.reply("У вас нет доступа к данной команде, сорян");
   
   try {
      command.run(bot, message, args, connection);
