@@ -15,10 +15,10 @@ exports.run = async (bot, message, args) => {
     let code = $('#nuclearcodess').text();
     let mcode = code.replace(/\s+/g, '');
     
-    let alfa = mcode.slice(47, -40);
-    let brava = mcode.slice(55, -32);
-    let charli = mcode.slice(63, -24);
-    let ckakogo = mcode.slice(16, -69);
+    let alfa = mcode.slice(46, -39);
+    let brava = mcode.slice(54, -31);
+    let charli = mcode.slice(62, -23);
+    let ckakogo = mcode.slice(15, -68);
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
     if (brava === "UNSOLVED") brava = "Нет данных.";
