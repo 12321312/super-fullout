@@ -14,7 +14,7 @@ exports.run = async (bot, message, args) => {
   .then(($) => {
     let code = $('#nuclearcodess').text();
     let mcode = code.replace(/\s+/g, '');
-    
+
     let alfa = mcode.slice(48, -40);
     let brava = mcode.slice(56, -32);
     let charli = mcode.slice(64, -24);
@@ -34,7 +34,7 @@ exports.run = async (bot, message, args) => {
     .addField("Альфа:", `**${alfa}**`, true)
     .addField("Браво:", `**${brava}**`, true)
     .addField("Чарли:", `**${charli}**`, true);
-    if (args[0] == "+") ambed.addField("Тест:", `**${mcode}**`, false)
+    if (args[0] == "+") ambed.addField("Тест:", `**${mcode.length}**`, false)
 
     message.channel.send({embed:ambed});    
   })
