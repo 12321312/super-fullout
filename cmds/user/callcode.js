@@ -29,7 +29,12 @@ exports.run = async (bot, message, args) => {
      brava = mcode.slice(55, -32);
      charli = mcode.slice(63, -24);
      ckakogo = mcode.slice(16, -69);
-    } else return message.reply("создатели nuka-script снова что-то намудрили, коды пока-что не доступны через меня, посмотри их на сайте: https://nukacrypt.com/")
+    } else if (mcode.length == 95) {
+      alfa = mcode.slice(49, -40);
+      brava = mcode.slice(57, -32);
+      charli = mcode.slice(65, -24);
+      ckakogo = mcode.slice(18, -69);
+     } else return message.reply("создатели nuka-script снова что-то намудрили, коды пока-что не доступны через меня, посмотри их на сайте: https://nukacrypt.com/");
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
     if (brava === "UNSOLVED") brava = "Нет данных.";
@@ -46,7 +51,7 @@ exports.run = async (bot, message, args) => {
     .addField("Браво:", `**${brava}**`, true)
     .addField("Чарли:", `**${charli}**`, true);
     if (args[0] == "+") ambed.addField("length:", `**${mcode.length}**`, false)
-    if (args[0] == "+") ambed.addField("mcode:", `**${mcode.length}**`, false)
+    if (args[0] == "+") ambed.addField("mcode:", `**${mcode}**`, false)
 
     message.channel.send({embed:ambed});    
   })
