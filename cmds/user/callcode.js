@@ -14,16 +14,21 @@ exports.run = async (bot, message, args) => {
   .then(($) => {
     let code = $('#nuclearcodess').text();
     let mcode = code.replace(/\s+/g, '');
+    let alfa;
+    let brava;
+    let charli;
+    let ckakogo;
+    
     if (mcode.length == 96) {
-    let alfa = mcode.slice(48, -40);
-    let brava = mcode.slice(56, -32);
-    let charli = mcode.slice(64, -24);
-    let ckakogo = mcode.slice(17, -69);
+     alfa = mcode.slice(48, -40);
+     brava = mcode.slice(56, -32);
+     charli = mcode.slice(64, -24);
+     ckakogo = mcode.slice(17, -69);
     } else if (mcode.length == 97) {
-    let alfa = mcode.slice(47, -40);
-    let brava = mcode.slice(55, -32);
-    let charli = mcode.slice(63, -24);
-    let ckakogo = mcode.slice(16, -69);
+     alfa = mcode.slice(47, -40);
+     brava = mcode.slice(55, -32);
+     charli = mcode.slice(63, -24);
+     ckakogo = mcode.slice(16, -69);
     } else return message.reply("создатели nuka-script снова что-то намудрили, коды пока-что не доступны через меня, посмотри их на сайте: https://nukacrypt.com/")
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
