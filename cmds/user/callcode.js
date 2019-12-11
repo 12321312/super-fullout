@@ -34,7 +34,7 @@ exports.run = async (bot, message, args) => {
     .addField("Альфа:", `**${alfa}**`, true)
     .addField("Браво:", `**${brava}**`, true)
     .addField("Чарли:", `**${charli}**`, true);
-    if (args["+"]) ambed.addField("Тест:", `**${mcode}**`, false)
+    if (args[0] == "+") ambed.addField("Тест:", `**${mcode}**`, false)
 
     message.channel.send({embed:ambed});    
   })
