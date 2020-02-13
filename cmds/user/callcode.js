@@ -35,7 +35,7 @@ exports.run = async (bot, message, args) => {
       brava = mcode.slice(57, -32);
       charli = mcode.slice(65, -24);
       ckakogo = mcode.slice(18, -69);
-     } else return message.reply("создатели nuka-script снова что-то намудрили, коды пока-что не доступны через меня, посмотри их на сайте: https://nukacrypt.com/");
+     } //else return message.reply("создатели nuka-script снова что-то намудрили, коды пока-что не доступны через меня, посмотри их на сайте: https://nukacrypt.com/");
 
     if (charli === "UNSOLVED") charli = "Нет данных.";
     if (brava === "UNSOLVED") brava = "Нет данных.";
