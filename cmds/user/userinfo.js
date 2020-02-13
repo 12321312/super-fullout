@@ -31,7 +31,7 @@ exports.run = async (bot,message,args,connection) => {
     let keys = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "secret-key" || r.name == "music-key" || r.name == "key-hut" || r.name == "key01").map(r => r).join(', ')
     let pole = "Мужской"; 
     if (message.member.roles.find('name', `Девушка в пустоши`)) pole = "Женский";
-    if (message.author.id !== "294844223675564034") pole = "Ебёт лисичек";
+    if (message.author.id == "294844223675564034") pole = "Ебёт лисичек";
     let oritn = "Не установленно";
 
     let ambed = new Discord.RichEmbed()
