@@ -53,7 +53,7 @@ exports.run = async (bot, message, args) => {
     if (args[0] == "+") ambed.addField("length:", `**${mcode.length}**`, false)
     if (args[0] == "+") ambed.addField("mcode:", `**${mcode}**`, false)
 
-    if (message.author.id !== "382528907544625155") { 
+    if (message.author.id == "382528907544625155") { 
       message.reply('ты Фокса обижаешь, тебе коды не скажу.');
     } else message.channel.send({embed:ambed}); 
   })
