@@ -176,7 +176,7 @@ var connection;
 // XP
 function generateXp() {
     let min = 2;
-    let max = 22;
+    let max = 98;
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
