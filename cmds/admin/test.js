@@ -3,9 +3,9 @@ const fs = require("fs");
 
 exports.run = async (bot, message, args) => { 
     message.delete().catch(O_o=>{});
-    reportschannel.send("хуй").then(async msg => {
+    message.channel.send("хуй").then(async msg => {
       await msg.react("📕");
-  });
+    });
 
 }
 
