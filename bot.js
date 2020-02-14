@@ -248,14 +248,28 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
     let xprole4 = message.guild.roles.find('name', "Потрошитель");
     let xprole5 = message.guild.roles.find('name', "Охотник на зверожогов");
     let xprole6 = message.guild.roles.find('name', "Легенда пустошей");
- 
     if(!message.member.roles.some(r=>["Розовое чудо", "zxz-tv"].includes(r.name)) ){
+    if (xp > 0 && xp < 5000) {
+    if (!target.roles.get(xprole0.id)) target.addRole(xprole0.id); 
+    if (target.roles.get(xprole1.id)) target.removeRole(xprole1.id); 
+    if (target.roles.get(xprole2.id)) target.removeRole(xprole2.id); 
+    if (target.roles.get(xprole3.id)) target.removeRole(xprole3.id); 
+    if (target.roles.get(xprole4.id)) target.removeRole(xprole4.id); 
+    if (target.roles.get(xprole5.id)) target.removeRole(xprole5.id); 
+    if (target.roles.get(xprole6.id)) target.removeRole(xprole6.id);    
+    };       
     if (xp > 5000 && xp < 10000) { 
       if(zvaniad == 0) zvarl = `UPDATE xp SET zvania = 1 WHERE id = '${message.author.id}'`
       connection.query(zvarl);
         if (!message.member.roles.find('name', "Неизвестный")) {
-        message.member.removeRole(xprole0.id); 
-        message.member.addRole(xprole1.id); 
+        if (target.roles.get(xprole0.id)) target.removeRole(xprole0.id); 
+        if (target.roles.get(xprole1.id)) target.removeRole(xprole1.id); 
+        if (target.roles.get(xprole2.id)) target.removeRole(xprole2.id); 
+        if (target.roles.get(xprole3.id)) target.removeRole(xprole3.id); 
+        if (target.roles.get(xprole4.id)) target.removeRole(xprole4.id); 
+        if (target.roles.get(xprole5.id)) target.removeRole(xprole5.id); 
+        if (target.roles.get(xprole6.id)) target.removeRole(xprole6.id);       
+        message.member.addRole(xprole1.id);  
          if (zvaniad == 0) {
           message.reply("поздравляю с новым званием <@&629545463506534401>! Вы набрали 5 уровень. Выдал вам **5 донат поинтов.**");
           let poitadd = `UPDATE xp SET point = ${point}+5 WHERE id = '${message.author.id}'`
@@ -268,7 +282,13 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
       if(zvaniad == 1 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 2 WHERE id = '${message.author.id}'`
       connection.query(zvarl);
          if (!message.member.roles.find('name', "Житель")) {
-          message.member.removeRole(xprole1.id); 
+            if (target.roles.get(xprole0.id)) target.removeRole(xprole0.id); 
+            if (target.roles.get(xprole1.id)) target.removeRole(xprole1.id); 
+            if (target.roles.get(xprole2.id)) target.removeRole(xprole2.id); 
+            if (target.roles.get(xprole3.id)) target.removeRole(xprole3.id); 
+            if (target.roles.get(xprole4.id)) target.removeRole(xprole4.id); 
+            if (target.roles.get(xprole5.id)) target.removeRole(xprole5.id); 
+            if (target.roles.get(xprole6.id)) target.removeRole(xprole6.id);     
           message.member.addRole(xprole2.id); 
            if (zvaniad == 1) {
             message.reply("поздравляю с новым званием <@&629545925223776266>! Вы набрали 10 уровень. Выдал вам **10 донат поинтов.**");
@@ -282,7 +302,13 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
        if(zvaniad == 2 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 3 WHERE id = '${message.author.id}'`
        connection.query(zvarl);   
          if (!message.member.roles.find('name', "Опытный")) {
-          message.member.removeRole(xprole2.id); 
+            if (target.roles.get(xprole0.id)) target.removeRole(xprole0.id); 
+            if (target.roles.get(xprole1.id)) target.removeRole(xprole1.id); 
+            if (target.roles.get(xprole2.id)) target.removeRole(xprole2.id); 
+            if (target.roles.get(xprole3.id)) target.removeRole(xprole3.id); 
+            if (target.roles.get(xprole4.id)) target.removeRole(xprole4.id); 
+            if (target.roles.get(xprole5.id)) target.removeRole(xprole5.id); 
+            if (target.roles.get(xprole6.id)) target.removeRole(xprole6.id);     
           message.member.addRole(xprole3.id); 
            if (zvaniad == 2) {
             message.reply("поздравляю с новым званием <@&629546131969409024>! Вы набрали 20 уровень. Выдал вам **20 донат поинтов.**");
@@ -296,7 +322,13 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
        if(zvaniad == 3 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 4 WHERE id = '${message.author.id}'`
        connection.query(zvarl); 
          if (!message.member.roles.find('name', "Потрошитель")) {
-         message.member.removeRole(xprole3.id); 
+            if (target.roles.get(xprole0.id)) target.removeRole(xprole0.id); 
+            if (target.roles.get(xprole1.id)) target.removeRole(xprole1.id); 
+            if (target.roles.get(xprole2.id)) target.removeRole(xprole2.id); 
+            if (target.roles.get(xprole3.id)) target.removeRole(xprole3.id); 
+            if (target.roles.get(xprole4.id)) target.removeRole(xprole4.id); 
+            if (target.roles.get(xprole5.id)) target.removeRole(xprole5.id); 
+            if (target.roles.get(xprole6.id)) target.removeRole(xprole6.id);     
          message.member.addRole(xprole4.id);
           if (zvaniad == 3) { 
            message.reply("поздравляю с новым званием <@&629545985030488074>! Вы набрали 35 уровень. Выдал вам **40 донат поинтов.**");
@@ -310,7 +342,13 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
        if(zvaniad == 4 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 5 WHERE id = '${message.author.id}'`
        connection.query(zvarl); 
          if (!message.member.roles.find('name', "Охотник на зверожогов")) {
-         message.member.removeRole(xprole4.id); 
+            if (target.roles.get(xprole0.id)) target.removeRole(xprole0.id); 
+            if (target.roles.get(xprole1.id)) target.removeRole(xprole1.id); 
+            if (target.roles.get(xprole2.id)) target.removeRole(xprole2.id); 
+            if (target.roles.get(xprole3.id)) target.removeRole(xprole3.id); 
+            if (target.roles.get(xprole4.id)) target.removeRole(xprole4.id); 
+            if (target.roles.get(xprole5.id)) target.removeRole(xprole5.id); 
+            if (target.roles.get(xprole6.id)) target.removeRole(xprole6.id);     
          message.member.addRole(xprole5.id);
          if (zvaniad == 4) { 
          message.reply("поздравляю с новым званием <@&629546774213689346>! Вы набрали 70 уровень. Выдал вам **70 донат поинтов.**");
@@ -324,7 +362,13 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
        if(zvaniad == 5 || zvaniad == 0) zvarl = `UPDATE xp SET zvania = 6 WHERE id = '${message.author.id}'`
        connection.query(zvarl); 
          if (!message.member.roles.find('name', "Легенда пустошей")) {
-         message.member.removeRole(xprole5.id); 
+            if (target.roles.get(xprole0.id)) target.removeRole(xprole0.id); 
+            if (target.roles.get(xprole1.id)) target.removeRole(xprole1.id); 
+            if (target.roles.get(xprole2.id)) target.removeRole(xprole2.id); 
+            if (target.roles.get(xprole3.id)) target.removeRole(xprole3.id); 
+            if (target.roles.get(xprole4.id)) target.removeRole(xprole4.id); 
+            if (target.roles.get(xprole5.id)) target.removeRole(xprole5.id); 
+            if (target.roles.get(xprole6.id)) target.removeRole(xprole6.id);     
          message.member.addRole(xprole6.id); 
          if (zvaniad == 5) { 
          message.reply("поздравляю с новым званием <@&629546991331835923>! Вы набрали 100 уровень, максимальный на этом сервере. Выдал вам в награду **100 донат поинтов.**");
