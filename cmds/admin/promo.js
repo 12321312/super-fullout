@@ -47,7 +47,9 @@ connection.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
     if (target.roles.get('629544609185267723')) { 
         target.removeRole('629544609185267723');  
     };
-    target.addRole('629545463506534401'); 
+    if (!target.roles.get('629545463506534401')) { 
+        target.addRole('629545463506534401');  
+    }; 
 
     logchannel.send({embed:regionEmbed});
     };
