@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js");
 const fs = require("fs");
 
-exports.run = async (bot, message, args) => { 
+exports.run = async (bot, message, args, connection) => { 
 if(!message.member.roles.some(r=>["Администрация", "Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
 message.delete(15000);
 let target = message.guild.member(message.mentions.users.first() || message.guild.member.get(args[0]));
