@@ -30,7 +30,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
         .setThumbnail("http://www.pngall.com/wp-content/uploads/2016/07/Special-offer-PNG-Images.png")
         .setFooter("Special v2020", "https://upload.wikimedia.org/wikipedia/commons/8/88/Mini-Robot.png")
         .setTimestamp()
-        .setColor("#FFDF00")
+        .setColor("#C400AB")
         .addField("Администратор:", `<@${message.author.id}>`)
         .addField("Пользователь:", `${target}`, true)
         .addField("Поинты:", `${pointadd}`, false);    
