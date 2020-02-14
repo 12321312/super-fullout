@@ -45,9 +45,9 @@ connection.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
     if (xp >= 7500) regionEmbed.addField("xp:", `${xpadd}`, true);   
 
     if (target.roles.get('629544609185267723')) { 
-        target.addRole('629545463506534401'); 
         target.removeRole('629544609185267723');  
     };
+    target.addRole('629545463506534401'); 
 
     logchannel.send({embed:regionEmbed});
     };
