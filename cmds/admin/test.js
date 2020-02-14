@@ -10,8 +10,8 @@ exports.run = async (bot, message, args) => {
 }
 
 module.exports.command = {
-  name: 'report',
-  aliases: ["репорт", "жалоба", "репортет"],
+  name: 'test',
+  aliases: ["тест", "test", "тестировать"],
   description: "Доёбывается до пользователя, чо доебался?",
   usage: "usercommand",
   category: "user",
