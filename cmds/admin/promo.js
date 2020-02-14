@@ -33,7 +33,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
         .setColor("#FFDF00")
         .addField("Администратор:", `<@${message.author.id}>`)
         .addField("Пользователь:", `${target}`, true)
-        .addField("Поинты:", `${pointadd}`, true);    
+        .addField("Поинты:", `${pointadd}`, false);    
 
     
     if(xp >= 7500) {
