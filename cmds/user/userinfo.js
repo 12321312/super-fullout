@@ -49,6 +49,7 @@ exports.run = async (bot,message,args,connection) => {
     .addField("Донат поинтов:",point, true)
     .addField("Звание:",zhanei, true)
     .addField("ID индификатор:",a.id, true);
+    if(a.roles.get('677908522041868293')) ambed.addField("**Участник промо акции.**", "", true);
     if(keys) ambed.addField("Ключи:", keys, true);
     if(warn && !warn2) ambed.addField("Варны:", `**1**: ${warn}`, true);
     if(warn2 && !warn3) ambed.addField("Варны:", `**1**: ${warn}\n**2**: ${warn2}`, true);
