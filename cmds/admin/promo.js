@@ -51,7 +51,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
 
     logchannel.send({embed:regionEmbed});
     };
-    message.channel.send('Пользователю ' + `<@${target.id}>` + ' было выдано промо.';
+    message.channel.send('Пользователю ' + `<@${target.id}>` + ' было выдано промо.');
 
     connection.query(sql);
 });
