@@ -37,7 +37,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
     sql = `UPDATE xp SET xp,point = 7500,5 WHERE id = '${target.id}'`  
     //bot.send(`Изменил кол-во XP у пользователя <@${target.id}>. \nВсего опыта у пользователя: ` + `\`\`\`js\n${args[1]} XP\`\`\``);
     target.addRole(promorole.id);
-
+    };
 
     connection.query(sql);
 });
