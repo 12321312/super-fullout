@@ -6,7 +6,7 @@ if(!message.member.roles.some(r=>["Администрация", "Розовое 
 message.delete();
 let target = message.guild.member(message.mentions.users.first() || message.guild.member.get(args[0]));
 if(!target) return message.reply("такого участника нету");
-//if (target.id == "294844223675564034") return message.reply('да не трогайте фокса бл');
+if (target.id == "294844223675564034") return message.reply('да не трогайте фокса бл');
 if (target.roles.get('677908522041868293')) return message.reply('он уже полчил бонус.');
 let logchannel = message.guild.channels.get("629570190769913876");
 if(!logchannel) return message.channel.send("Сбились настройки логирования, проверьте пожалуйста их.");
@@ -37,7 +37,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
 
     
     if(xp >= 7500) {
-    sql = `UPDATE xp SET xp = ${xpadd}, point = ${pointadd} WHERE id = '${target.id}'`  
+    sql = `UPDATE xp SET xp = ${xpadd}, point = ${pointadd}, zvania = 1 WHERE id = '${target.id}'`  
     } else { 
     sql = `UPDATE xp SET xp = 7500, point = ${pointadd} WHERE id = '${target.id}'`      
     };
