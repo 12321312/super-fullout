@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 
 exports.run = async (bot, message, args) => { 
-    message.delete().catch(O_o=>{});
+    message.delete();
     message.channel.send("хуй").then(async msg => {
       await msg.react("📕");
     });
