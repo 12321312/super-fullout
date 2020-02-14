@@ -235,6 +235,7 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
     if(rows.length < 1) {
      sql = `INSERT INTO xp (id, xp, point, zvania, mute) VALUES ('${message.author.id}', ${generateXp()}, 0, 0, 0)`
     } else {
+     let target = message.member;
      let xp = rows[0].xp;
      let point = rows[0].point;
      let zvaniad = rows[0].zvania;
