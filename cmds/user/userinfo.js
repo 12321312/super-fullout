@@ -31,6 +31,7 @@ exports.run = async (bot,message,args,connection) => {
     let keys = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "secret-key" || r.name == "music-key" || r.name == "key-hut" || r.name == "key01").map(r => r).join(', ')
     let pole = "Мужской"; 
     if (message.member.roles.find('name', `Девушка в пустоши`)) pole = "Женский";
+    let fallo = 0;
     if (message.member.roles.find('name', `Избранный`)) fallo = 1;
     if (message.author.id == "294844223675564034") pole = "Ебёт лисичек";
     let oritn = "Не установленно";
