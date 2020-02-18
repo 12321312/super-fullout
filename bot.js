@@ -514,17 +514,29 @@ bot.on('guildMemberRemove', member => {
   })
 
   bot.on("messageDelete", (messageDelete) => {
+    let entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    let user = ""
+      if (entry.extra.channel.id === message.channel.id
+        && (entry.target.id === message.author.id)
+        && (entry.createdTimestamp > (Date.now() - 5000))
+        && (entry.extra.count >= 1)) {
+      user = entry.executor;
+    } else { 
+      user = message.author;
+    };
 
     let DeleteEmbed = new Discord.RichEmbed()
     .setTitle("**Удаленное сообщение**")
     .setColor("#fc3c3c")
     .addField("Автор сообщения:", messageDelete.author, true)
     .addField("Канал:", messageDelete.channel, true)
+    .addField("Удалил:", user, true)
     .addField("Текст сообщения:", messageDelete.content)
     .setTimestamp()
     .setThumbnail("https://png.pngtree.com/svg/20170121/201c2dc59c.png")
     .setFooter("Лог мастер 2000", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg");
-  
+
+
     let DeleteChannel = messageDelete.guild.channels.find(x => x.name === "logs");
     DeleteChannel.send({embed:DeleteEmbed});
   });  
