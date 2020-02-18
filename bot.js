@@ -93,10 +93,19 @@ process.on('unhandledRejection', err => {
 	console.error(`Unhandled Rejection: \n ${msg}`);
 });
 
-
+function update() {
+	request(updateUrl, function(err, response, body) {
+		if(err) {
+			return console.log(error);
+		}
+    let sizemem = message.guild.members.size;
+    bot.guilds.channels.find("id", "679181672482209840").setName(`$Всего участников}:${sizemem}`);
+	});
+}
 
 // При загузке
 bot.on('ready', () => {
+    bot.setInterval(update, 30000);
     wait(1000);
     console.log('Запущен, сэр!');
     bot.user.setPresence({
