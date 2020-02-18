@@ -96,16 +96,16 @@ process.on('unhandledRejection', err => {
 
 async function update() {
     let memstatus = bot.users.size;
-    let memvoisest = bot.channels.size;
-    let memxzst = bot.guilds.size;
     let xip = await superagent
   .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
     let status = xip.body.platform.response.fallout76;
 
-
     bot.channels.get("679181672482209840").setName(`Всего участников: ${memstatus}`);
-    bot.channels.get("679187372100812800").setName(`Статус серверов: ${status}`);
-    bot.channels.get("679187435749507083").setName(`Всего участников3: ${memxzst}`);
+    if(status === "UP") {
+     bot.channels.get("679187372100812800").setName(`Сервера Fallout: ✅`);
+    } else {
+     bot.channels.get("679187372100812800").setName(`Сервера Fallout: ⛔`);
+    };
 }
 
 // При загузке
