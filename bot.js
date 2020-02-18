@@ -514,7 +514,7 @@ bot.on('guildMemberRemove', member => {
   })
 
   bot.on("messageDelete", async (messageDelete) => {
-    let entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    let entry = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user = ""
       if (entry.extra.channel.id === message.channel.id
         && (entry.target.id === message.author.id)
@@ -522,7 +522,7 @@ bot.on('guildMemberRemove', member => {
         && (entry.extra.count >= 1)) {
       user = entry.executor;
     } else { 
-      user = message.author;
+      user = messageDelete.author;
     };
 
     let DeleteEmbed = new Discord.RichEmbed()
