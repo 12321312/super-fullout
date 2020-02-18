@@ -94,11 +94,11 @@ process.on('unhandledRejection', err => {
 	console.error(`Unhandled Rejection: \n ${msg}`);
 });
 
-function update() {
+async function update() {
     let memstatus = bot.users.size;
     let memvoisest = bot.channels.size;
     let memxzst = bot.guilds.size;
-    let xip = superagent
+    let xip = await superagent
   .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
     let status = xip.body.platform.response.fallout76;
 
