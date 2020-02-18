@@ -94,13 +94,8 @@ process.on('unhandledRejection', err => {
 });
 
 function update() {
-	request(updateUrl, function(err, response, body) {
-		if(err) {
-			return console.log(error);
-		}
     let sizemem = message.guild.members.size;
     bot.guilds.channels.find("id", "679181672482209840").setName(`$Всего участников}:${sizemem}`);
-	});
 }
 
 // При загузке
