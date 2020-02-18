@@ -14,6 +14,7 @@ exports.run = async (bot, message, args) => {
   .then(($) => {
     let code = $('#nuclearcodess').text();
     let mcode = code.replace(/\s+/g, '');
+    mcode = code.replace(/WeeklyCodesWeekof/g, '');
     let alfa;
     let brava;
     let charli;
