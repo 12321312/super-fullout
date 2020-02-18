@@ -9,7 +9,7 @@ exports.run = async (bot, message, args) => {
   .setFooter("Твой милый бот", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
   .setTimestamp()
   .setColor("#FFDF00")
-  .addField("Всего участников:", message.guild.members.size, true)
+  .addField("Всего участников:", bot.users.size, true)
   .addField("Всего онлайн:", message.guild.members.filter(m => m.presence.status === 'online').size, true)
   .addField("Твой пинг:", "-" + bot.ping , true)
   .addField("Мой пинг:", message.createdTimestamp - Date.now(), true)
