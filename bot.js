@@ -514,7 +514,7 @@ bot.on('guildMemberRemove', member => {
   })
 
   bot.on("messageDelete", async (messageDelete) => {
-    const entrydel;
+    let entrydel;
     entrydel = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user;
       if (entrydel.extra.channel.id === message.channel.id
