@@ -101,13 +101,20 @@ async function update() {
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
     let xip = await superagent
-  .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
-    let status = xip.body.platform.response.fallout76;
-    
+    .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
+    let status = xip.body.platform.response.fallout76;   
 
     bot.channels.get("679181672482209840").setName(`📎Всего участников: ${memstatus}`);
+    if(memstatus === 0) {
+    bot.channels.get("679187435749507083").setName(`📎В онлайне никого нет`);
+    } else {
     bot.channels.get("679187435749507083").setName(`📎Всего онлайн: ${memonline}`);
+    };
+    if(count === 0) {
+    bot.channels.get("679195786856235018").setName(`📎В голосе никого нет`);
+    } else {
     bot.channels.get("679195786856235018").setName(`📎В голосе: ${count}`);
+    };
     if(status === "UP") {
      bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ✅`);
     } else {
