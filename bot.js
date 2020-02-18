@@ -513,33 +513,26 @@ bot.on('guildMemberRemove', member => {
     await logs.send({embed:embed})
   })
 
-  bot.on("messageDelete", async (messageDelete) => {
-    const entrydel = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first());
-    let user;
-      if (entrydel.extra.channel.id === message.channel.id
-        && (entrydel.target.id === message.author.id)
-        && (entrydel.createdTimestamp > (Date.now() - 5000))
-        && (entrydel.extra.count >= 1)) {
-      user = entrydel.executor;
+  bot.on('messageDelete', async (message) => {
+    const logs = message.guild.channels.find(channel => channel.name === "logs");
+    if (message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) {
+      message.guild.createChannel('logs', 'text');
+    }
+    if (!message.guild.me.hasPermission('MANAGE_CHANNELS') && !logs) { 
+      console.log('The logs channel does not exist and tried to create the channel but I am lacking permissions')
+    }  
+    const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    let user = ""
+      if (entry.extra.channel.id === message.channel.id
+        && (entry.target.id === message.author.id)
+        && (entry.createdTimestamp > (Date.now() - 5000))
+        && (entry.extra.count >= 1)) {
+      user = entry.executor.username
     } else { 
-      user = messageDelete.author;
-    };
-
-    let lolemeded = new Discord.RichEmbed()
-    .setTitle("**Удаленное сообщение**")
-    .setColor("#fc3c3c")
-    .setTimestamp()
-    .setThumbnail("https://png.pngtree.com/svg/20170121/201c2dc59c.png")
-    .setFooter("Лог мастер 2000", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
-    .addField("Автор сообщения:", messageDelete.author, true);
-    if (user != messageDelete.author) lolemeded.addField("Удалил:", user, true);
-    lolemeded.addField("Канал:", messageDelete.channel, true);
-    lolemeded.addField("Текст сообщения:", messageDelete.content);
-
-
-    let DeleteChannel = messageDelete.guild.channels.find(x => x.name === "logs");
-    DeleteChannel.send({embed:lolemeded});
-  });  
+      user = message.author.username
+    }
+    logs.send(`A message was deleted in ${message.channel.name} by ${user}`);
+  }) 
 
 // login 
 bot.login(process.env.BOT_TOKEN);
