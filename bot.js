@@ -497,7 +497,7 @@ bot.on('guildMemberRemove', member => {
     .addField('Создал:', `${entry.executor.username}`)
     .setColor(0x43B581)
     .setTimestamp()
-    await logs.send(embed)
+    await logs.send({embed:embed})
   })
   
   bot.on('roleUpdate', async (oldR, newR) => {
@@ -514,7 +514,7 @@ bot.on('guildMemberRemove', member => {
     .addField('Права Роли', `${newR.permissions}`)
     .setColor(`${newR.hexColor}`)
     .setTimestamp()
-    await logs.send(embed)
+    await logs.send({embed:embed})
   })
   
   bot.on('roleDelete', async (role) => {
@@ -527,7 +527,7 @@ bot.on('guildMemberRemove', member => {
     .addField('Удалил:', `${entry.executor.username}`)
     .setColor(0xF04747)
     .setTimestamp()
-    await logs.send(embed)
+    await logs.send({embed:embed})
   })
   
 // login 
