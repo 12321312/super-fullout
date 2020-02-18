@@ -4,6 +4,7 @@ let config = require('./config.json');
 let prefix = config.prefix;
 const mysql = require("mysql");
 const fs = require('fs');
+const superagent = require("superagent");
 const invites = {};
 const wait = require('util').promisify(setTimeout);
 const yourID = "294844223675564034"; 
@@ -97,9 +98,13 @@ function update() {
     let memstatus = bot.users.size;
     let memvoisest = bot.channels.size;
     let memxzst = bot.guilds.size;
+    let xip = await superagent
+  .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
+    let status = xip.body.platform.response.fallout76;
+
 
     bot.channels.get("679181672482209840").setName(`Всего участников: ${memstatus}`);
-    bot.channels.get("679187372100812800").setName(`Всего участников2: ${memvoisest}`);
+    bot.channels.get("679187372100812800").setName(`Статус серверов: ${status}`);
     bot.channels.get("679187435749507083").setName(`Всего участников3: ${memxzst}`);
 }
 
