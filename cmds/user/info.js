@@ -10,7 +10,7 @@ exports.run = async (bot, message, args) => {
   .setTimestamp()
   .setColor("#FFDF00")
   .addField("Всего участников:", bot.users.size, true)
-  .addField("Всего онлайн:", bot.users.size.filter(m => m.presence.status === 'online').size, true)
+  .addField("Всего онлайн:", message.member.guild.size.filter(m => m.presence.status === 'online').size, true)
   .addField("Твой пинг:", "-" + bot.ping , true)
   .addField("Мой пинг:", message.createdTimestamp - Date.now(), true)
   .addField("ID сервера:", message.guild.id)
