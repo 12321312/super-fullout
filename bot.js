@@ -500,23 +500,6 @@ bot.on('guildMemberRemove', member => {
     await logs.send({embed:embed})
   })
   
-  bot.on('roleUpdate', async (oldR, newR) => {
-    const entry = await oldR.guild.fetchAuditLogs({type: 'ROLE_UPDATE'}).then(audit => audit.entries.first())
-    if(!entry.executor) return;
-    let logs = oldR.guild.channels.find(channel => channel.name === "logs");
-    let embed = new Discord.RichEmbed()
-    .setTitle('Роль Обновлена')
-    .addField('Старое Название', `${oldR.name}`, true)
-    .addField('Новое Название', `${newR.name}`, true)
-    .addField('Цвет Роли:', `${newR.hexColor}`)
-    .addField('Позиция:', `${newR.calculatedPosition}`, true)
-    .addField('Изменил:', `${entry.executor}`, true)
-    .addField('Права Роли', `${newR.permissions}`)
-    .setColor(`${newR.hexColor}`)
-    .setTimestamp()
-    await logs.send({embed:embed})
-  })
-  
   bot.on('roleDelete', async (role) => {
     const entry = await role.guild.fetchAuditLogs({type: 'ROLE_DELETE'}).then(audit => audit.entries.first())
     let logs = role.guild.channels.find(channel => channel.name === "logs");
