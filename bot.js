@@ -95,7 +95,7 @@ process.on('unhandledRejection', err => {
 });
 
 async function update() {
-    let memstatus = bot.users.roles.filter(r => r.name == "Розовое чудо").size;
+    let memstatus = bot.users.size;
     let memonline = bot.users.filter(m => m.presence.status === 'online').size + bot.users.filter(m => m.presence.status === 'idle').size + bot.users.filter(m => m.presence.status === 'dnd').size;
     let voiceChannels = bot.channels.filter(c => c.type === 'voice');
     let count = 0;
@@ -120,8 +120,7 @@ async function update() {
     } else {
      bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ⛔`);
     };
-
-    
+   
 }
 
 // При загузке
