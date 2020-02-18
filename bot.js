@@ -525,20 +525,20 @@ bot.on('guildMemberRemove', member => {
       user = messageDelete.author;
     };
 
-    let DeleteEmbed = new Discord.RichEmbed()
+    let lolemeded = new Discord.RichEmbed()
     .setTitle("**Удаленное сообщение**")
     .setColor("#fc3c3c")
-    .addField("Автор сообщения:", messageDelete.author, true)
-    .addField("Удалил:", user, true)
-    .addField("Канал:", messageDelete.channel, true)
-    .addField("Текст сообщения:", messageDelete.content)
     .setTimestamp()
     .setThumbnail("https://png.pngtree.com/svg/20170121/201c2dc59c.png")
-    .setFooter("Лог мастер 2000", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg");
+    .setFooter("Лог мастер 2000", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
+    .addField("Автор сообщения:", messageDelete.author, true);
+    if (user != messageDelete.author) lolemeded.addField("Удалил:", user, true);
+    lolemeded.addField("Канал:", messageDelete.channel, true);
+    lolemeded.addField("Текст сообщения:", messageDelete.content);
 
 
     let DeleteChannel = messageDelete.guild.channels.find(x => x.name === "logs");
-    DeleteChannel.send({embed:DeleteEmbed});
+    DeleteChannel.send({embed:lolemeded});
   });  
 
 // login 
