@@ -98,7 +98,7 @@ function update() {
     let memstatus = bot.users.size;
     let memvoisest = bot.channels.size;
     let memxzst = bot.guilds.size;
-    let xip = await superagent
+    let xip = superagent
   .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
     let status = xip.body.platform.response.fallout76;
 
