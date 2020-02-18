@@ -94,7 +94,8 @@ process.on('unhandledRejection', err => {
 });
 
 function update() {
-    bot.channels.get("679181672482209840").setName(`$Всего участников}:0`);
+    let memstatus = bot.members.size;
+    bot.channels.get("679181672482209840").setName(`Всего участников: ${memstatus}`);
 }
 
 // При загузке
