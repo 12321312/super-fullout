@@ -105,19 +105,19 @@ async function update() {
     let status = xip.body.platform.response.fallout76;
     
 
-    bot.channels.get("679181672482209840").setName(`Всего участников: ${memstatus}`);
-    bot.channels.get("679187435749507083").setName(`Всего онлайн: ${memonline}`);
-    bot.channels.get("679195786856235018").setName(`В голосе: ${count}`);
+    bot.channels.get("679181672482209840").setName(`📎Всего участников: ${memstatus}`);
+    bot.channels.get("679187435749507083").setName(`📎Всего онлайн: ${memonline}`);
+    bot.channels.get("679195786856235018").setName(`📎В голосе: ${count}`);
     if(status === "UP") {
-     bot.channels.get("679187372100812800").setName(`Сервера Fallout: ✅`);
+     bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ✅`);
     } else {
-     bot.channels.get("679187372100812800").setName(`Сервера Fallout: ⛔`);
+     bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ⛔`);
     };
 }
 
 // При загузке
 bot.on('ready', () => {
-    bot.setInterval(update, 2000);
+    bot.setInterval(update, 30000);
     wait(1000);
     console.log('Запущен, сэр!');
     bot.user.setPresence({
