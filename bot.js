@@ -95,7 +95,6 @@ process.on('unhandledRejection', err => {
 });
 
 async function update() {
-  connection.query(`SELECT * FROM dustupcall WHERE id = 1`, async (err, rows) => {
     let memstatus = bot.users.size;
     let memonline = bot.users.filter(m => m.presence.status === 'online').size + bot.users.filter(m => m.presence.status === 'idle').size + bot.users.filter(m => m.presence.status === 'dnd').size;
     let voiceChannels = bot.channels.filter(c => c.type === 'voice');
@@ -104,6 +103,7 @@ async function update() {
     let xip = await superagent
   .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
     let status = xip.body.platform.response.fallout76;
+    
 
     bot.channels.get("679181672482209840").setName(`📎Всего участников: ${memstatus}`);
     bot.channels.get("679187435749507083").setName(`📎Всего онлайн: ${memonline}`);
@@ -113,38 +113,6 @@ async function update() {
     } else {
      bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ⛔`);
     };
-
-  if(err) throw err;
-  let sql;
-  if(rows.length < 1) {
-    sql = `INSERT INTO xp (id, idmessage, status) VALUES (1, 0, 0)`;
-  } else {
-  let idmessageval = rows[0].idmessage;
-  let statusval = rows[0].status;
-  let statuscanal = message.guild.channels.get("629557743698575371");
-  if(!statuscanal) return message.channel.send("Сбились настройки логирования, проверьте пожалуйста их.");
-
-  if(status === "UP") {
-    if (statusval === "OFF") {
-     sql = `UPDATE dustupcall SET status = "ON" WHERE id = '1'` 
-     statuscanal.send("Сервера снова доступны, играйте"); 
-    } else {
-     sql = `UPDATE dustupcall SET status = "OFF" WHERE id = '1'`
-     statuscanal.send("Вернул в базу значение **OFF**"); 
-    };
-  } else {
-    if (statusval === "ON") {
-     sql = `UPDATE dustupcall SET status = "OFF" WHERE id = '1'`  
-     statuscanal.send("Сервера недоступны, не играйте"); 
-    } else {
-      sql = `UPDATE dustupcall SET status = "ON" WHERE id = '1'`
-      statuscanal.send("Вернул в базу значение **ON**"); 
-     };
-  };
-
-}  
-});
- connection.query(sql);  
 }
 
 // При загузке
