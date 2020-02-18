@@ -513,26 +513,7 @@ bot.on('guildMemberRemove', member => {
     await logs.send({embed:embed})
   })
 
-  bot.on("messageDelete", async (messageDelete) => {
-    let logs = await messageDelete.guild.fetchAuditLogs({type: 72});
-    let entry = logs.entries.first();
-    if (entry.executor.id === "629561598268145674") return;
 
-    let lolemeded = new Discord.RichEmbed()
-    .setTitle("**Удаленное сообщение**")
-    .setColor("#fc3c3c")
-    .setTimestamp()
-    .setThumbnail("https://png.pngtree.com/svg/20170121/201c2dc59c.png")
-    .setFooter("Лог мастер 2000", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
-    .addField("Автор сообщения:", messageDelete.author, true);
-    if (entry.executor != messageDelete.author) lolemeded.addField("Удалил:", entry.executor, true);
-    lolemeded.addField("Канал:", messageDelete.channel, true);
-    lolemeded.addField("Текст сообщения:", messageDelete.content);
-
-
-    let DeleteChannel = messageDelete.guild.channels.find(x => x.name === "logs");
-    DeleteChannel.send({embed:lolemeded});
-  });  
 
 // login 
 bot.login(process.env.BOT_TOKEN);
