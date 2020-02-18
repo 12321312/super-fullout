@@ -513,7 +513,7 @@ bot.on('guildMemberRemove', member => {
     await logs.send({embed:embed})
   })
 
-  bot.on("messageDelete", (messageDelete) => {
+  bot.on("messageDelete", async (messageDelete) => {
     let entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user = ""
       if (entry.extra.channel.id === message.channel.id
@@ -529,8 +529,8 @@ bot.on('guildMemberRemove', member => {
     .setTitle("**Удаленное сообщение**")
     .setColor("#fc3c3c")
     .addField("Автор сообщения:", messageDelete.author, true)
-    .addField("Канал:", messageDelete.channel, true)
     .addField("Удалил:", user, true)
+    .addField("Канал:", messageDelete.channel, true)
     .addField("Текст сообщения:", messageDelete.content)
     .setTimestamp()
     .setThumbnail("https://png.pngtree.com/svg/20170121/201c2dc59c.png")
