@@ -95,7 +95,7 @@ process.on('unhandledRejection', err => {
 });
 
 async function update() {
-  connection.query(`SELECT * FROM dustupcall WHERE id = 1`, (err, rows) => {
+  connection.query(`SELECT * FROM dustupcall WHERE id = 1`, async (err, rows) => {
     let memstatus = bot.users.size;
     let memonline = bot.users.filter(m => m.presence.status === 'online').size + bot.users.filter(m => m.presence.status === 'idle').size + bot.users.filter(m => m.presence.status === 'dnd').size;
     let voiceChannels = bot.channels.filter(c => c.type === 'voice');
