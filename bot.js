@@ -514,17 +514,10 @@ bot.on('guildMemberRemove', member => {
   })
 
   bot.on("messageDelete", async (messageDelete) => {
-    let entrydel;
-    entrydel = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    const entrydel = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user;
-      if (entrydel.extra.channel.id === message.channel.id
-        && (entrydel.target.id === message.author.id)
-        && (entrydel.createdTimestamp > (Date.now() - 5000))
-        && (entrydel.extra.count >= 1)) {
-      user = entrydel.executor;
-    } else { 
+
       user = messageDelete.author;
-    };
 
     let lolemeded = new Discord.RichEmbed()
     .setTitle("**Удаленное сообщение**")
