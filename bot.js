@@ -94,8 +94,7 @@ process.on('unhandledRejection', err => {
 });
 
 function update() {
-    let sizemem = bot.guild.members.size;
-    bot.guild.channels.get("679181672482209840").setName(`$Всего участников}:${sizemem}`);
+    bot.guild.channels.get("679181672482209840").setName(`$Всего участников}:0`);
 }
 
 // При загузке
