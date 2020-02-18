@@ -514,10 +514,8 @@ bot.on('guildMemberRemove', member => {
   })
 
   bot.on("messageDelete", async (messageDelete) => {
-    const entrydel = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
-    let user;
-
-      user = messageDelete.author;
+    let logs = await msg.guild.fetchAuditLogs({type: 72});
+    let entry = logs.entries.first();
 
     let lolemeded = new Discord.RichEmbed()
     .setTitle("**Удаленное сообщение**")
@@ -526,7 +524,7 @@ bot.on('guildMemberRemove', member => {
     .setThumbnail("https://png.pngtree.com/svg/20170121/201c2dc59c.png")
     .setFooter("Лог мастер 2000", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
     .addField("Автор сообщения:", messageDelete.author, true);
-    if (user != messageDelete.author) lolemeded.addField("Удалил:", user, true);
+    if (entry.executor != messageDelete.author) lolemeded.addField("Удалил:", entry.executor, true);
     lolemeded.addField("Канал:", messageDelete.channel, true);
     lolemeded.addField("Текст сообщения:", messageDelete.content);
 
