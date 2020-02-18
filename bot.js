@@ -514,8 +514,9 @@ bot.on('guildMemberRemove', member => {
   })
 
   bot.on("messageDelete", async (messageDelete) => {
-    let logs = await msg.guild.fetchAuditLogs({type: 72});
+    let logs = await messageDelete.guild.fetchAuditLogs({type: 72});
     let entry = logs.entries.first();
+    if (entry.executor.id === "629561598268145674") return;
 
     let lolemeded = new Discord.RichEmbed()
     .setTitle("**Удаленное сообщение**")
