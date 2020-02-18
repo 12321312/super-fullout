@@ -96,7 +96,7 @@ process.on('unhandledRejection', err => {
 function update() {
     let memstatus = bot.users.size;
     let memvoisest = bot.channels.size;
-    let memxzst = client.guilds.size;
+    let memxzst = bot.guilds.size;
 
     bot.channels.get("679181672482209840").setName(`Всего участников: ${memstatus}`);
     bot.channels.get("679187372100812800").setName(`Всего участников2: ${memvoisest}`);
