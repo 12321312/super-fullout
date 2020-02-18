@@ -94,7 +94,7 @@ process.on('unhandledRejection', err => {
 });
 
 function update() {
-    let memstatus = bot.members.size;
+    let memstatus = bot.users.size;
     bot.channels.get("679181672482209840").setName(`Всего участников: ${memstatus}`);
 }
 
