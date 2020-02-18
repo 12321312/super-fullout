@@ -514,8 +514,8 @@ bot.on('guildMemberRemove', member => {
   })
 
   bot.on("messageDelete", async (messageDelete) => {
-    let entrydel = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
-    let user = ""
+    let entrydel = await messageDelete.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first());
+    let user;
       if (entrydel.extra.channel.id === message.channel.id
         && (entrydel.target.id === message.author.id)
         && (entrydel.createdTimestamp > (Date.now() - 5000))
