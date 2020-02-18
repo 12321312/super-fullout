@@ -408,6 +408,47 @@ connection.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, row
 // END XP LOGGER
 
 
+bot.on('roleCreate', async (role) => {
+  const entry = await role.guild.fetchAuditLogs({type: 'ROLE_CREATE'}).then(audit => audit.entries.first())
+  let logs = role.guild.channels.find(channel => channel.name === "logs");
+  let embed = new Discord.RichEmbed()
+  .setTitle('Роль Создана')
+  .addField('Название Роли:', `${role.name}`)
+  .addField('Создал:', `${entry.executor.username}`)
+  .setColor(0x43B581)
+  .setTimestamp()
+  await logs.send(embed)
+})
+
+bot.on('roleUpdate', async (oldR, newR) => {
+  const entry = await oldR.guild.fetchAuditLogs({type: 'ROLE_UPDATE'}).then(audit => audit.entries.first())
+  if(!entry.executor) return;
+  let logs = oldR.guild.channels.find(channel => channel.name === "logs");
+  let embed = new Discord.RichEmbed()
+  .setTitle('Роль Обновлена')
+  .addField('Старое Название', `${oldR.name}`, true)
+  .addField('Новое Название', `${newR.name}`, true)
+  .addField('Цвет Роли:', `${newR.hexColor}`)
+  .addField('Позиция:', `${newR.calculatedPosition}`, true)
+  .addField('Изменил:', `${entry.executor.username}`, true)
+  .addField('Права Роли', `${newR.permissions}`)
+  .setColor(`${newR.hexColor}`)
+  .setTimestamp()
+  await logs.send(embed)
+})
+
+bot.on('roleDelete', async (role) => {
+  const entry = await role.guild.fetchAuditLogs({type: 'ROLE_DELETE'}).then(audit => audit.entries.first())
+  let logs = role.guild.channels.find(channel => channel.name === "logs");
+
+  let embed = new Discord.RichEmbed()
+  .setTitle('Роль Удалена')
+  .addField('Название Роли:', `${role.name}`)
+  .addField('Удалил:', `${entry.executor.username}`)
+  .setColor(0xF04747)
+  .setTimestamp()
+  await logs.send(embed)
+})
 
   if(!message.content.startsWith(prefix)) return;
     if(cooldown.has(message.author.id)){
