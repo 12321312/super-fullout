@@ -5,7 +5,7 @@ exports.run = async (bot, message, args) => {
     let target = message.mentions.members.first() || message.guild.members.get(args[0]);      
     let test = target.presence.status; 
     let game = target.presence.game;  
-    let icogame = target.presence.game.url;
+    let icogame = target.presence.game.url || "null";
     let namegame = target.presence.game.name;
     let statsgame = target.presence.game.state;
     let typegame = target.presence.game.type;
