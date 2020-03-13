@@ -17,12 +17,12 @@ exports.run = async (bot, message, args) => {
     .setFooter("Твой милый бот", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
     .setTimestamp()
     .setColor("#FFDF00")
-    .addField("Название игры:", namegame, true)
-    .addField("Статус игры:", statsgame, true)
-    .addField("URL иконки игры:", icogame, true)
-    .addField("Тип игры:", typegame, true)
-    .addField("Детали игры:", detailgame, true)
-    .addField("Фулл с консоли:", game);
+    .addField("Название игры:", namegame, false)
+    .addField("Статус игры:", statsgame, false)
+    .addField("URL иконки игры:", icogame, false)
+    .addField("Тип игры:", typegame, false)
+    .addField("Детали игры:", detailgame, false)
+    .addField("Фулл с консоли:", game.text);
 
     message.channel.send({embed:infore})
     console.log(game);
