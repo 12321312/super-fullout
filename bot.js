@@ -102,6 +102,11 @@ async function update() {
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
 
+    let vflolrole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('629543523137355776') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'Fallout 76');
+    vflolrole.forEach(function(t, i) {
+      t.member.addrole('629543523137355776');
+    }); 
+
     let altorole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('687910716849782856') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'ATLAS');
     altorole.forEach(function(t, i) {
       t.member.addrole('687910716849782856');
