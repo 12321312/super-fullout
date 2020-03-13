@@ -112,7 +112,7 @@ async function update() {
       f.addRole('679299834448052225');
     }); 
 
-    let keylol = bot.guilds.get('584827387607515137').members.filter(a => !f.roles.has('679300416109805571') && a.roles.some(r=>["ПК","Консоль","secret-key","music-key","atlas-key","key-hut","key01",].includes(r.name)));
+    let keylol = bot.guilds.get('584827387607515137').members.filter(a => !a.roles.has('679300416109805571') && a.roles.some(r=>["ПК","Консоль","secret-key","music-key","atlas-key","key-hut","key01",].includes(r.name)));
     keylol.forEach(function(a, i) {
       a.addRole('679300416109805571');
     }); 
