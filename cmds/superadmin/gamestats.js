@@ -2,8 +2,8 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 exports.run = async (bot, message, args) => { 
     if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
-    let user = message.mentions.members.first() || message.guild.members.get(args[0]);      
-    let gamename = user.presence.game.name;  
+    let target = message.mentions.members.first() || message.guild.members.get(args[0]);      
+    let gamename = target.presence.game.name;  
     console.log(gamename);
 };
 module.exports.command = {
