@@ -121,15 +121,27 @@ async function update() {
     frack.forEach(function(f, i) {
       f.addRole('679299834448052225');
     }); 
+    let frackor = bot.guilds.get('584827387607515137').members.filter(f => f.roles.has('679299834448052225') && !f.roles.some(f=>["Братство Стали","Институт","Подземка","Минитмен","Рейдер","Траппер","Анклав","Дети Атома","Свободные штаты"].includes(f.name)));
+    frackor.forEach(function(f, i) {
+      f.removeRole('679299834448052225');
+    }); 
 
     let keylol = bot.guilds.get('584827387607515137').members.filter(a => !a.roles.has('679300416109805571') && a.roles.some(a=>["ПК","Консоль","secret-key","music-key","atlas-key","key-hut","key01"].includes(a.name)));
     keylol.forEach(function(a, i) {
       a.addRole('679300416109805571');
     }); 
+    let keylolor = bot.guilds.get('584827387607515137').members.filter(a => a.roles.has('679300416109805571') && !a.roles.some(a=>["ПК","Консоль","secret-key","music-key","atlas-key","key-hut","key01"].includes(a.name)));
+    keylolor.forEach(function(a, i) {
+      a.removeRole('679300416109805571');
+    }); 
 
     let prooch = bot.guilds.get('584827387607515137').members.filter(b => !b.roles.has('679300324871241768') && b.roles.some(b=>["Rythm", "NSFWBot","Zapier","токсичная какашка","Ник в игре Queshimada","😈",""].includes(b.name)));
     prooch.forEach(function(b, i) {
       b.addRole('679300324871241768');
+    }); 
+    let proochor = bot.guilds.get('584827387607515137').members.filter(b => b.roles.has('679300324871241768') && !b.roles.some(b=>["Rythm", "NSFWBot","Zapier","токсичная какашка","Ник в игре Queshimada","😈",""].includes(b.name)));
+    proochor.forEach(function(b, i) {
+      b.removeRole('679300324871241768');
     }); 
 
     let vflolrole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('629543523137355776') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'Fallout 76');
