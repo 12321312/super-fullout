@@ -104,12 +104,12 @@ async function update() {
 
     let vflolrole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('629543523137355776') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'Fallout 76');
     vflolrole.forEach(function(t, i) {
-      t.member.addrole('629543523137355776');
+      t.addrole('629543523137355776');
     }); 
 
     let altorole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('687910716849782856') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'ATLAS');
     altorole.forEach(function(t, i) {
-      t.member.addrole('687910716849782856');
+      t.addrole('687910716849782856');
     }); 
     
     let voiceChs = bot.guilds.get('584827387607515137').channels.filter(c => c.id === '628604126149869569' || c.id === '584832686208843826' || c.id === '584832761123307541' || c.id === '584832781201309717' || c.id === '629554985331326996' || c.id === '629555066537508894' || c.id === '629555098523271178' || c.id === '629554945359872020');
