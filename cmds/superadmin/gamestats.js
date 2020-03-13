@@ -3,12 +3,12 @@ const fs = require("fs");
 exports.run = async (bot, message, args) => { 
     if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
     let target = message.mentions.members.first() || message.guild.members.get(args[0]);      
-    let game = target.presence.game || "Нету";  
-    let icogame = target.presence.game.assets || "Нету";
-    let namegame = target.presence.game.name || "Нету";
-    let statsgame = target.presence.game.state || "Нету";
-    let typegame = target.presence.game.type || "Нету";
-    let detailgame =  target.presence.game.details || "Нету";
+    let game = target.presence.game;  
+    let icogame = target.presence.game.url;
+    let namegame = target.presence.game.name;
+    let statsgame = target.presence.game.state;
+    let typegame = target.presence.game.type;
+    let detailgame =  target.presence.game.details;
 
 
     let infore = new Discord.RichEmbed()
