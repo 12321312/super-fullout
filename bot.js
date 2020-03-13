@@ -102,14 +102,19 @@ async function update() {
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
 
-    let nahalo = bot.guilds.get('584827387607515137').members.filter(d => d.roles.size == 0);
+    /*let nahalo = bot.guilds.get('584827387607515137').members.filter(d => d.roles.size == 0);
     nahalo.forEach(function(d, i) {
       d.addRole('629544609185267723');
-    }); 
+    });
+    */ 
 
     let zvail = bot.guilds.get('584827387607515137').members.filter(m => !m.roles.has('679299183936667660') && m.roles.some(r=>["Администрация", "Модератор", "Nitro Booster 🔰", "Ветеран", "Qusoriance*", "Легенда пустошей", "Охотник на зверожогов", "Потрошитель", "Опытный", "Житель", "Неизвестный", "Выходец из убежища"].includes(r.name)));
     zvail.forEach(function(m, i) {
       m.addRole('679299183936667660');
+    }); 
+    let zvailor = bot.guilds.get('584827387607515137').members.filter(m => m.roles.has('679299183936667660') && !m.roles.some(r=>["Администрация", "Модератор", "Nitro Booster 🔰", "Ветеран", "Qusoriance*", "Легенда пустошей", "Охотник на зверожогов", "Потрошитель", "Опытный", "Житель", "Неизвестный", "Выходец из убежища"].includes(r.name)));
+    zvailor.forEach(function(m, i) {
+      m.removeRole('679299183936667660');
     }); 
 
     let frack = bot.guilds.get('584827387607515137').members.filter(f => !f.roles.has('679299834448052225') && f.roles.some(f=>["Братство Стали","Институт","Подземка","Минитмен","Рейдер","Траппер","Анклав","Дети Атома","Свободные штаты"].includes(f.name)));
