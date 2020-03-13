@@ -3,8 +3,8 @@ const fs = require("fs");
 exports.run = async (bot, message, args) => { 
     if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
     let target = message.mentions.members.first() || message.guild.members.get(args[0]);      
-    let test = target.presence.game; 
-    let game = target.presence;  
+    let test = target.presence.status; 
+    let game = target.presence.game;  
     let icogame = target.presence.game.url;
     let namegame = target.presence.game.name;
     let statsgame = target.presence.game.state;
@@ -23,7 +23,7 @@ exports.run = async (bot, message, args) => {
     .addField("URL игры:", icogame, false)
     .addField("Тип игры:", typegame, false)
     .addField("Детали игры:", detailgame, false)
-    .addField("Проверка:", game)
+    .addField("Статус:", test)
     .addField("Фулл с консоли:", game);
 
 
