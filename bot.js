@@ -127,8 +127,6 @@ async function update() {
     } else {
      bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ⛔`);
     };
-
-    vflolow.setVoiceChannel('671295673865601025');
 }
 
 // При загузке
