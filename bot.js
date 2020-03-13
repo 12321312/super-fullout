@@ -120,7 +120,7 @@ async function update() {
     if(vflolow > 0) {
     bot.channels.get("687890570894508032").setName(`📎В игре: ${vflolow}`);
     } else {
-      bot.channels.get("687890570894508032").setName(`📎Никто не игарет в эту игру.`);
+      bot.channels.get("687890570894508032").setName(`📎Никто не играет.`);
     };
     if(status === "UP") {
      bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ✅`);
