@@ -101,7 +101,8 @@ async function update() {
     let voiceChannels = bot.channels.filter(c => c.type === 'voice');
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
-    let altolow = bot.users.filter(m => m.presence.game != null && m.presence.game.type == 0 && m.presence.game.name === 'ATLAS');
+    //let altolow = bot.users.filter(m => m.presence.game != null && m.presence.game.type == 0 && m.presence.game.name === 'ATLAS');
+    let altolow = bot.guilds.gen('584827387607515137').channels.get('584832686208843826').members.filter(m => m.presence.game != null && m.presence.game.type == 0 && m.presence.game.name === 'ATLAS')
     let xip = await superagent
     .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
     let status = xip.body.platform.response.fallout76;   
