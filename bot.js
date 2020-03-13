@@ -107,6 +107,16 @@ async function update() {
       m.addRole('679299183936667660');
     }); 
 
+    let frack = bot.guilds.get('584827387607515137').members.filter(f => !f.roles.has('679299834448052225') && f.roles.some(f=>["Братство Стали","Институт","Подземка","Минитмен","Рейдер","Траппер","Анклав","Дети Атома","Свободные штаты"].includes(f.name)));
+    frack.forEach(function(f, i) {
+      f.addRole('679299834448052225');
+    }); 
+
+    let keylol = bot.guilds.get('584827387607515137').members.filter(a => !f.roles.has('679300416109805571') && a.roles.some(a=>["ПК","Консоль","secret-key","music-key","atlas-key","key-hut","key01",].includes(a.name)));
+    keylol.forEach(function(a, i) {
+      a.addRole('679300416109805571');
+    }); 
+
     let vflolrole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('629543523137355776') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'Fallout 76');
     vflolrole.forEach(function(t, i) {
       t.addRole('629543523137355776');
