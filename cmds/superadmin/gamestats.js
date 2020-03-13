@@ -4,7 +4,7 @@ exports.run = async (bot, message, args) => {
     if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
     let target = message.mentions.members.first() || message.guild.members.get(args[0]);      
     let game = target.presence.game || "Нету";  
-    let icogame = target.presence.game.assets.largeImageURL || "Нету";
+    let icogame = target.presence.game.assets || "Нету";
     let namegame = target.presence.game.name || "Нету";
     let statsgame = target.presence.game.state || "Нету";
     let typegame = target.presence.game.type || "Нету";
@@ -13,7 +13,7 @@ exports.run = async (bot, message, args) => {
 
     let infore = new Discord.RichEmbed()
     .setTitle("Game Status by lousyfox")
-    .setThumbnail(icogame)
+    //.setThumbnail(icogame)
     .setFooter("Твой милый бот", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
     .setTimestamp()
     .setColor("#FFDF00")
