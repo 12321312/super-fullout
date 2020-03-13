@@ -101,6 +101,7 @@ async function update() {
     let voiceChannels = bot.channels.filter(c => c.type === 'voice');
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
+    var altorole = bot.users.filter(m => m.roles.has('687910716849782856') && m.presence.game != null && m.presence.game.type == 0 && m.presence.game.name === 'ATLAS')
     let voiceChs = bot.guilds.get('584827387607515137').channels.filter(c => c.id === '628604126149869569' || c.id === '584832686208843826' || c.id === '584832761123307541' || c.id === '584832781201309717' || c.id === '629554985331326996' || c.id === '629555066537508894' || c.id === '629555098523271178' || c.id === '629554945359872020')
     voiceChs.forEach(function(c, i) {
     var altolow = bot.guilds.get('584827387607515137').channels.get(c.id).members.filter(m => m.presence.game != null && m.presence.game.type == 0 && m.presence.game.name === 'ATLAS')
@@ -133,6 +134,10 @@ async function update() {
     } else {
      bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ⛔`);
     };
+  
+    altorole.forEach(function(m, i) {
+      m.member.addrole('687910716849782856');
+    })  
 
 }
 
