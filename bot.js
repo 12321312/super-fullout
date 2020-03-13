@@ -98,7 +98,7 @@ async function update() {
     let memstatus = bot.users.size;
     let memonline = bot.users.filter(m => m.presence.status === 'online').size + bot.users.filter(m => m.presence.status === 'idle').size + bot.users.filter(m => m.presence.status === 'dnd').size;
     //let vflolow = bot.users.filter(r => r.presence.game.name === 'Fallout 76').size;
-    let vflolow = bot.users.filter(m => m.presence.game.type == 0 && m.presence.game != null && m.presence.game.name === 'Fallout 76').size;
+    let vflolow = bot.users.filter(m => m.presence.game != null && m.presence.game.type == 0 && m.presence.game.name === 'Fallout 76').size;
     let voiceChannels = bot.channels.filter(c => c.type === 'voice');
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
