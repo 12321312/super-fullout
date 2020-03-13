@@ -28,7 +28,7 @@ exports.run = async (bot,message,args,connection) => {
     let zhanei = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "Розовое чудо" || r.name == "zxz-tv" || r.name == "Выходец из убежища" || r.name == "Администрация" || r.name == "Модератор" || r.name == "Охотник на зверожогов" || r.name == "Легенда пустошей" || r.name == "Потрошитель" || r.name == "Опытный" || r.name == "Житель" || r.name == "Неизвестный" || r.name == "Nitro Booster 🔰").map(r => r).join(', ')
     if(!zhanei) zhanei = "нету";
     
-    let keys = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "secret-key" || r.name == "music-key" || r.name == "key-hut" || r.name == "key01").map(r => r).join(', ')
+    let keys = message.member.roles.filter(r => r.name !=="@everyone" && r.name == "secret-key" || r.name == "music-key" || r.name == "key-hut" || r.name == "atlas-key" || r.name == "key01").map(r => r).join(', ')
     let pole = "Мужской"; 
     if (message.member.roles.find('name', `Девушка в пустоши`)) pole = "Женский";
     let fallo = 0;
