@@ -102,7 +102,7 @@ async function update() {
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
 
-    let nahalo = bot.guilds.get('584827387607515137').members.filter(d => d.roles.filter(r => r).size == 1);
+    let nahalo = bot.guilds.get('584827387607515137').members.filter(d => d.roles.filter(r => r).length == 1);
     nahalo.forEach(function(d, i) {
       d.addRole('629544609185267723');
     });
