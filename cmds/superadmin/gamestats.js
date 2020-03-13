@@ -7,7 +7,7 @@ exports.run = async (bot, message, args) => {
     let role = target.roles.length;
 
     console.log(game);
-    console.log(size);
+    console.log(role);
 };
 module.exports.command = {
     name: 'gamestats',
