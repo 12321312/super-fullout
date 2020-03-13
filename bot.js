@@ -191,7 +191,7 @@ async function update() {
 
 // При загузке
 bot.on('ready', () => {
-    bot.setInterval(update, 3000);
+    bot.setInterval(update, 30000);
     wait(1000);
     console.log('Запущен, сэр!');
     bot.user.setPresence({
