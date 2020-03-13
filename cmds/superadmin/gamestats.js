@@ -7,7 +7,7 @@ exports.run = async (bot, message, args) => {
 
     let infore = new Discord.RichEmbed()
     .setTitle("Game Status by lousyfox")
-    .setThumbnail(user.presence.game.assets.largeImageURL)
+    .setThumbnail(target.presence.game.assets.largeImageURL)
     .setFooter("Твой милый бот", "https://www.meme-arsenal.com/memes/5fb377d05d9593b7eb0344b79532afe0.jpg")
     .setTimestamp()
     .setColor("#FFDF00")
