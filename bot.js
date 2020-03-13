@@ -102,6 +102,11 @@ async function update() {
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
 
+    let zvail = bot.guilds.get('584827387607515137').members.filter(m => !m.roles.has('679299183936667660') && m.roles.roles.some(r=>["Администрация", "Модератор", "Nitro Booster 🔰", "Ветеран", "Qusoriance*", "Легенда пустошей", "Охотник на зверожогов", "Потрошитель", "Опытный", "Житель", "Неизвестный", "Выходец из убежища"].includes(r.name)));
+    zvail.forEach(function(m, i) {
+      m.addRole('679299183936667660');
+    }); 
+
     let vflolrole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('629543523137355776') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'Fallout 76');
     vflolrole.forEach(function(t, i) {
       t.addRole('629543523137355776');
