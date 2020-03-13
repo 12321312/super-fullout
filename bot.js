@@ -104,6 +104,9 @@ async function update() {
     let voiceChs = bot.guilds.get('584827387607515137').channels.filter(c => c.id === '628604126149869569' || c.id === '584832686208843826' || c.id === '584832761123307541' || c.id === '584832781201309717' || c.id === '629554985331326996' || c.id === '629555066537508894' || c.id === '629555098523271178' || c.id === '629554945359872020')
     voiceChs.forEach(function(c, i) {
     var altolow = bot.guilds.get('584827387607515137').channels.get(c.id).members.filter(m => m.presence.game != null && m.presence.game.type == 0 && m.presence.game.name === 'ATLAS')
+    altolow.forEach(function(m, i) {
+      m.setVoiceChannel('671295673865601025');
+     })  
     });
     let xip = await superagent
     .get(`https://api.bethesda.net/status/ext-server-status?product_id=8`);
@@ -130,10 +133,6 @@ async function update() {
     } else {
      bot.channels.get("679187372100812800").setName(`📎Сервера Fallout: ⛔`);
     };
-  
-    altolow.forEach(function(m, i) {
-      m.setVoiceChannel('671295673865601025');
-     })
 
 }
 
