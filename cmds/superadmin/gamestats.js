@@ -3,7 +3,8 @@ const fs = require("fs");
 exports.run = async (bot, message, args) => { 
     if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
     let target = message.mentions.members.first() || message.guild.members.get(args[0]);      
-    let game = target.presence.game;  
+    let test = target.presence.game; 
+    let game = target.presence;  
     let icogame = target.presence.game.url;
     let namegame = target.presence.game.name;
     let statsgame = target.presence.game.state;
@@ -19,10 +20,12 @@ exports.run = async (bot, message, args) => {
     .setColor("#FFDF00")
     .addField("Название игры:", namegame, false)
     .addField("Статус игры:", statsgame, false)
-    .addField("URL иконки игры:", icogame, false)
+    .addField("URL игры:", icogame, false)
     .addField("Тип игры:", typegame, false)
     .addField("Детали игры:", detailgame, false)
-    .addField("Фулл с консоли:", game.text);
+    .addField("Проверка:", game)
+    .addField("Фулл с консоли:", game);
+
 
     message.channel.send({embed:infore})
     console.log(game);
