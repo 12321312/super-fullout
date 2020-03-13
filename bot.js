@@ -102,10 +102,11 @@ async function update() {
     let count = 0;
     for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
 
-    let nahalo = bot.guilds.get('584827387607515137').members.filter(d => d.roles.array() == undefined);
+    /*let nahalo = bot.guilds.get('584827387607515137').members.filter(d => d.roles.array() == undefined);
     nahalo.forEach(function(d, i) {
       d.addRole('629544609185267723');
     });
+    */
 
     let zvail = bot.guilds.get('584827387607515137').members.filter(m => !m.roles.has('679299183936667660') && m.roles.some(r=>["Администрация", "Модератор", "Nitro Booster 🔰", "Ветеран", "Qusoriance*", "Легенда пустошей", "Охотник на зверожогов", "Потрошитель", "Опытный", "Житель", "Неизвестный", "Выходец из убежища"].includes(r.name)));
     zvail.forEach(function(m, i) {
