@@ -117,6 +117,11 @@ async function update() {
       a.addRole('679300416109805571');
     }); 
 
+    let prooch = bot.guilds.get('584827387607515137').members.filter(b => !b.roles.has('679300324871241768') && b.roles.some(b=>["Rythm", "NSFWBot","Zapier","токсичная какашка","Ник в игре Queshimada","😈",""].includes(b.name)));
+    prooch.forEach(function(b, i) {
+      b.addRole('679300324871241768');
+    }); 
+
     let vflolrole = bot.guilds.get('584827387607515137').members.filter(t => !t.roles.has('629543523137355776') && t.presence.game != null && t.presence.game.type == 0 && t.presence.game.name === 'Fallout 76');
     vflolrole.forEach(function(t, i) {
       t.addRole('629543523137355776');
