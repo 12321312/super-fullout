@@ -3,17 +3,12 @@ const fs = require("fs");
 exports.run = async (bot, message, args) => { 
     if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.'); 
     if (!args[0]) return message.reply("не указан канал из которого следует переместить");
+    if (!args[0]) return message.reply("не указан канал в который следует переместить");
     let targetChannels = bot.channels.get(args[0]);
     if(!targetChannels) return message.reply("канала из которого вы хотите перетащить - нет");
     let moveChannels = bot.channels.get(args[1]);
-    if(!moveChannels && args[1]) return message.reply("канала в который вы хотите перетащить - нет");
-    let voiceChannels = bot.channels.filter(c => c.type === 'voice');
-    let tarhet;
-    if(!args[1]) {
-    tarhet = voiceChannels.members;
-    } else {
-    tarhet = targetChannels.members;    
-    }
+    if(!moveChannels) return message.reply("канала в который вы хотите перетащить - нет");
+    let tarhet = targetChannels.members;    
     if(!tarhet) return message.reply("В этом канале нет участников");
     let koltarhet = tarhet.size;
     if(koltarhet === 0) return message.reply("нет участников");
@@ -26,7 +21,7 @@ exports.run = async (bot, message, args) => {
     .setTimestamp()
     .setColor("#30D5C8")
     .addField("Администратор:", `<@${message.author.id}>`, false);
-    if(args[1]) { infore.addField("Из канала:", `<${targetChannels}>`, false); }
+    infore.addField("Из канала:", `<${targetChannels}>`, false); 
     infore.addField("В канал:", `<${moveChannels}>`, false);
     infore.addField(koltarhet + " участников:", perepis, true);
     
