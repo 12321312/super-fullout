@@ -3,10 +3,11 @@ const fs = require("fs");
 exports.run = async (bot, message, args) => { 
     if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');  
     let targetChannels = bot.channels.get(args[0]);
-    let tarhet = targetChannels.members.id;
+    let tarhet = targetChannels.members;
+    let perepis = tarhet.filter(r => r).map(r => r).join(', ')
 
-    console.log(tarhet);
-    message.channel.send(tarhet);
+    console.log(perepis);
+    message.channel.send(perepis);
 /*   
      let targetChannels = bot.channels.get(args[0]);
     let moveChannels = bot.channels.get(args[1]);
