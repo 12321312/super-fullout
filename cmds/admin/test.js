@@ -5,7 +5,7 @@ exports.run = async (bot, message, args) => {
   let voiceChannels = bot.channels.filter(c => c.type === 'voice');
   let tarhet = voiceChannels.members;
   
-  message.reply(tarhet)
+  console.log(tarhet);
 }
 
 module.exports.command = {
