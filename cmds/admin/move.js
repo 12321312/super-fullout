@@ -15,6 +15,8 @@ exports.run = async (bot, message, args) => {
     tarhet = targetChannels.members;    
     }
     if(!tarhet) return message.reply("В этом канале нет участников");
+    let koltarhet = tarhet.size;
+    if(koltarhet === 0) return message.reply("нет участников");
     let perepis = tarhet.filter(r => r).map(r => r).join(', ');
 
     let infore = new Discord.RichEmbed()
@@ -26,7 +28,7 @@ exports.run = async (bot, message, args) => {
     .addField("Администратор:", `<@${message.author.id}>`, false);
     if(args[1]) { infore.addField("Из канала:", `<${targetChannels}>`, false); }
     infore.addField("В канал:", `<${moveChannels}>`, false);
-    infore.addField("Участников:", perepis, true);
+    infore.addField(koltarhet + " участников:", perepis, true);
     
      tarhet.forEach(function(r, i) {
       r.setVoiceChannel(moveChannels);
