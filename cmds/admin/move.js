@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js");
 const fs = require("fs");
 exports.run = async (bot, message, args) => { 
-    if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.'); 
+    if(!message.member.roles.some(r=>["Розовое чудо", "Администрация"].includes(r.name))) return message.reply('Отказано в доступе.'); 
     message.delete()
     if (!args[0]) return message.reply("не указан канал из которого следует переместить");
     if (!args[1]) return message.reply("не указан канал в который следует переместить");

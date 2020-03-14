@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 const ms = require("ms"); 
 exports.run = async (bot, message, args,) => { 
-if(!message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) return message.reply('Отказано в доступе.');
+if(!message.member.roles.some(r=>["Розовое чудо", "Администрация"].includes(r.name))) return message.reply('Отказано в доступе.');
 if (!(args[0])) return message.reply("Не верно указан пользователь, напиши так: ```!мут <юзер упоминание> <время> <причина>```");
 if (!(args[1])) return message.reply("Не верно указано время, напиши так: ```!мут <юзер упоминание> <время> <причина>```");
 let tomute = message.guild.member(message.mentions.users.first() || message.guild.member.get(args[0]));
