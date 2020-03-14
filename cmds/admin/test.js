@@ -5,6 +5,10 @@ exports.run = async (bot, message, args) => {
   let voiceChannels = bot.channels.filter(c => c.type === 'voice');
   let tarhet = voiceChannels.members;
   
+  voiceChannels.forEach(function(r, i) {
+    let tarhet = voiceChannels.members;
+  });  
+
   console.log(tarhet);
 }
 
