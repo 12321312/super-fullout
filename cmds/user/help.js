@@ -17,7 +17,7 @@ exports.run = async (bot, message, args) => {
     .addField("!репорт <юзер> <причина>","Отправляет репорт администрации сервера на участника.")
     .addField("!коды","Покажет коды от бункеров альфа, брава и чарли.")
     .addField("!статус","Покажет доступ к серверам фаллаут.")
-    .setThumbnail("http://pngimg.com/uploads/question_mark/question_mark_PNG73.png")
+    .setThumbnail("http://pngimg.com/uploads/question_mark/question_mark_PNG73.png");
 
     message.delete(15000);
     message.channel.send({embed:ambed}).then(async msg => await msg.delete(15000));
