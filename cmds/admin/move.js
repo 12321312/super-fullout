@@ -6,7 +6,7 @@ exports.run = async (bot, message, args) => {
     let targetChannels = bot.channels.get(args[0]);
     if(!targetChannels) return message.reply("канала из которого вы хотите перетащить - нет");
     let moveChannels = bot.channels.get(args[1]);
-    if(!moveChannels) return message.reply("канала в который вы хотите перетащить - нет");
+    if(!moveChannels && args[1]) return message.reply("канала в который вы хотите перетащить - нет");
     let voiceChannels = bot.channels.filter(c => c.type === 'voice');
     let tarhet;
     if(!args[1]) {
