@@ -20,6 +20,11 @@ let zhanei = message.member.roles.filter(r => r.name !=="@everyone" && r.name ==
     if(message.member.roles.some(r=>["Розовое чудо", "Администрация"].includes(r.name))) ambed.addField("!регион *<регион>*","Меняет на нужный регион сервер.");
     if(message.member.roles.some(r=>["Розовое чудо", "Администрация"].includes(r.name))) ambed.addField("!удалить *<юзер> <кол-во>*","Удаляет сообщение пользователя в указаном кол-ве, можно удалить все, указав только кол-во.");
     if(message.member.roles.some(r=>["Розовое чудо", "Администрация"].includes(r.name))) ambed.addField("!мув *<id канала из> <d канала в>*","Перетаскивает всех пользователей в нужный канал.");
+    if(message.member.roles.some(r=>["Розовое чудо", "Администрация"].includes(r.name))) ambed.addField("!промо *<юзер>*","Выдает не много монет и звание 'избранный', действует как промо-акция для активных игроков.");
+    if(message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) ambed.addField("!поинт *<юзер> <кол-во> <изменить/добавить/снять>*","Изменяет кол-во поинтов у выбранного пользователя");
+    if(message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) ambed.addField("!хп *<юзер> <кол-во> <изменить/добавить/снять>*","Изменяет кол-во хп у выбранного пользователя");
+    if(message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) ambed.addField("!канал *<сообщение>*","Пишет сообщение в канал от имени бота");
+    if(message.member.roles.some(r=>["Розовое чудо"].includes(r.name))) ambed.addField("!лс *<юзер> <сообщение>*","Пишет сообщение в в лс от имени бота");
 
     message.delete(15000);
     message.channel.send({embed:ambed}).then(async msg => await msg.delete(15000));
