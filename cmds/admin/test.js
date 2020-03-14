@@ -3,13 +3,11 @@ const fs = require("fs");
 
 exports.run = async (bot, message, args) => { 
   let voiceChannels = bot.channels.filter(c => c.type === 'voice');
-  let tarhet = voiceChannels.members;
   
   voiceChannels.forEach(function(r, i) {
-    let tarhet = voiceChannels.members;
+    let tarhet = voiceChannels.members.size;
+    console.log(tarhet);
   });  
-
-  console.log(tarhet);
 }
 
 module.exports.command = {
