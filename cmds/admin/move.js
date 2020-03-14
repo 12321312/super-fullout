@@ -24,8 +24,8 @@ exports.run = async (bot, message, args) => {
     .setTimestamp()
     .setColor("#30D5C8")
     .addField("Администратор:", `<@${message.author.id}>`, false);
-    if(!args[1]) { infore.addField("Из канала:", `<#${targetChannels}>`, false); }
-    infore.addField("В канал:", `<#${moveChannels}>`, false);
+    if(args[1]) { infore.addField("Из канала:", `<${targetChannels}>`, false); }
+    infore.addField("В канал:", `<${moveChannels}>`, false);
     infore.addField("Участников:", perepis, true);
     
      tarhet.forEach(function(r, i) {
