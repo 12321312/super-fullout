@@ -2,11 +2,10 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 
 exports.run = async (bot, message, args) => { 
-    message.delete();
-    message.channel.send("хуй").then(async msg => {
-      await msg.react("📕");
-    });
-
+  let targetChannels = bot.channels.get(args[0]);
+  let tarhet = targetChannels.members.size;
+  
+  message.reply(tarhet)
 }
 
 module.exports.command = {
