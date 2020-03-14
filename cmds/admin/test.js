@@ -2,8 +2,8 @@ const Discord = module.require("discord.js");
 const fs = require("fs");
 
 exports.run = async (bot, message, args) => { 
-  let targetChannels = bot.channels.get(args[0]);
-  let tarhet = targetChannels.members.size;
+  let voiceChannels = bot.channels.filter(c => c.type === 'voice');
+  let tarhet = voiceChannels.members.size;
   
   message.reply(tarhet)
 }
