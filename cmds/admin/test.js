@@ -3,7 +3,7 @@ const fs = require("fs");
 
 exports.run = async (bot, message, args) => { 
   let voiceChannels = bot.channels.filter(c => c.type === 'voice');
-  let tarhet = voiceChannels.members.size;
+  let tarhet = voiceChannels.members;
   
   message.reply(tarhet)
 }
