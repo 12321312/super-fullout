@@ -549,7 +549,7 @@ bot.on('guildMemberAdd', member => {
 
 bot.on('guildMemberRemove', member => {
     console.log('User ' + member.user.tag + ' вышел с сервера!');
-    let gggrole = member.roles.filter(r => r.name !=="@everyone").map(r => r).join(', ')
+    let gggrole = member.roles.filter(r => r.name !== "@everyone" || r.name !== "———————Звание———————" || r.name !== "——————Фракция———————" || r.name !== "———————Ключи———————" || r.name !== "———————Прочее———————").map(r => r).join(', ')
     if (!gggrole) gggrole = "не было";
     let channel = bot.channels.get("629570190769913876");
     let Vshdex = new Discord.RichEmbed()
