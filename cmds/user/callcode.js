@@ -37,7 +37,7 @@ exports.run = async (bot, message, args) => {
     } else if (mcode.length == 69) {
       alfa = mcode.slice(45, -16);
       brava = mcode.slice(53, -8);
-      charli = mcode.slice(61, 0);
+      charli = mcode.slice(61);
       ckakogo = mcode.slice(0, 0);
      } else return message.reply("создатели nuka-script снова что-то намудрили, коды пока-что не доступны через меня, посмотри их на сайте: https://nukacrypt.com/");
 
